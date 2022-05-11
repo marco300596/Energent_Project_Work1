@@ -37,15 +37,15 @@
 			</div>
 			<div class="form-group">
 				<label>Firstname:</label>
-				<form:input path="firstname" cssClass="form-control" id="firstname" />
+				<form:input path="firstname" cssClass="form-control" id="firstname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Lastname</label>
-				<form:input path="lastname" cssClass="form-control" id="lastname" />
+				<form:input path="lastname" cssClass="form-control" id="lastname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Age:</label>
-				<form:input path="age" cssClass="form-control" id="age" />
+				<form:input path="age" cssClass="form-control" id="age" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<button type="submit" class="btn btn-success">Update Student</button>
 		</form:form>

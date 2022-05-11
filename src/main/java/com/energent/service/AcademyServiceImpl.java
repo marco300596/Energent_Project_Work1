@@ -2,6 +2,7 @@ package com.energent.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.energent.entity.Academy;
 import com.energent.repository.AcademyRepository;
+
+import ch.qos.logback.classic.joran.action.LoggerContextListenerAction;
 
 @Service
 public class AcademyServiceImpl implements AcademyService {
@@ -30,12 +33,14 @@ public class AcademyServiceImpl implements AcademyService {
 		int result = 2;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // used to inform the parsing function of the pattern used
 		LocalDate startDate = LocalDate.parse(start, formatter); // used to parse
+		startDate.withMonth(startDate.getMonthValue() - 1);
 		LocalDate endDate = LocalDate.parse(end, formatter);
+		endDate.withMonth(endDate.getMonthValue() - 1);
 		if(startDate.isBefore(endDate)) {
 			
 			result = 1;
 			String systemDate = LocalDate.now().format(formatter); //initialize a string with the value of the actual date
-			if (startDate.isAfter(LocalDate.parse(systemDate, formatter))||startDate.equals(LocalDate.parse(systemDate, formatter))) { // comparison between system's and starting date
+			if (startDate.isAfter(LocalDate.parse(systemDate, formatter)) || startDate.isEqual(LocalDate.parse(systemDate, formatter))) { // comparison between system's and starting date
 				
 				result = 0;
 				return result;
@@ -44,6 +49,26 @@ public class AcademyServiceImpl implements AcademyService {
 			return result;
 		}
 		return result;
+	}
+	
+	@Override
+	public boolean matchingDate(String givenString) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate actualDate = LocalDate.now();	//actual date of the system
+		LocalDate minexpectedDate=actualDate.minusYears(1);
+		LocalDate givenDate = LocalDate.parse(givenString, formatter);
+		return ((givenDate.isAfter(minexpectedDate)) && (givenDate.isBefore(actualDate)) && (givenDate.isEqual(actualDate)) && (givenDate.isEqual(minexpectedDate)));
+	}
+	
+	public List<Academy> findAllAcademiesByYear(String year){
+		
+		List<Academy> academies = new ArrayList<>();
+		List<Academy> academies1 = academyRepository.findAll();
+		for(Academy academy : academies1)
+			if (matchingDate(academy.getStartDate()))
+				academies.add(academy);
+		return academies;
 	}
 	
 	@Override

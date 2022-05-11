@@ -78,19 +78,19 @@ public class AcademyController {
 		 * and to call the page and method that is in charge with the 
 		 * system's response.
 		 */
-		log.info("inizio metodo");
 		if(mav.getViewName() == "/ConfirmAcademyAdded") {
 			int res = academyService.addAcademy(academy);
-			if (res == 2) // in case the date inserted is not right
+			if (res == 2)// in case the date inserted is not right
 				
 				mav.setViewName("/academy");
 			if (res == 1) { // in case we inserted an already existing code
 				
 				mav.setViewName("/NotifAcademy");
 				mav.addObject("academy",academy);
-			}else //in case everything checks out
+			}if(res == 0){ //in case everything checks out
 				
 				mav.setViewName(page);
+			}
 		}else {	//this part is in case we come from an update page
 			mav.setViewName(page);
 		}

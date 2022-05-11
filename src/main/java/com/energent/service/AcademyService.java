@@ -11,6 +11,7 @@ public interface AcademyService {
 	public int addAcademy(Academy academy);
 	public boolean updateAcademy(Academy academy);
 	public void removeAcademy(String codeId);
+	boolean matchingDate(String givenString);
 	public List<Academy> findAllAcademies();
 	public List<Academy> findAcademiesByTitle(String title);
 	public List<Academy> findAcademiesByLocation(String location);

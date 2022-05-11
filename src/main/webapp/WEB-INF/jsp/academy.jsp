@@ -32,19 +32,19 @@
 			<div class="form-row align-items-center">
 				<div class="col-sm-4">
 					<label>Academy Code</label>
-					<form:input path="codeId" cssClass="form-control" id="codeId" size="10"/>
+					<form:input path="codeId" cssClass="form-control" id="codeId" size="10" pattern="[a-zA-Z0-9\s]+"/>
 				</div>
 			</div>
 			<div class="form-row align-items-center">
 				<div class="col-sm-4">
 					<label>Academy Title</label>
-					<form:input path="title" cssClass="form-control" id="title" required="required" />
+					<form:input path="title" cssClass="form-control" id="title" required="required" pattern="[a-zA-Z0-9\s]+"/>
 				</div>
 			</div>
 			<div class="form-row align-items-center">
 				<div class="col-sm-4">
 					<label>Location</label>
-					<form:input path="location" cssClass="form-control" id="location" required="required" />
+					<form:input path="location" cssClass="form-control" id="location" required="required" pattern="[a-zA-Z0-9\s]+"/>
 				</div>
 			</div>
 			<div class="form-row align-items-center">

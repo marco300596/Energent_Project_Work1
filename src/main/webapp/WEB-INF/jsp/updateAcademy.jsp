@@ -35,11 +35,11 @@
 			</div>
 			<div class="form-group">
 				<label>Academy Title</label>
-				<form:input path="title" cssClass="form-control" id="title" />
+				<form:input path="title" cssClass="form-control" id="title" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Location</label>
-				<form:input path="location" cssClass="form-control" id="location" />
+				<form:input path="location" cssClass="form-control" id="location" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 			<label>Starting Date</label>

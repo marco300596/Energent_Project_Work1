@@ -25,19 +25,19 @@
 			cssClass="form">
 			<div class="form-group">
 				<label>Fiscal Code</label>
-				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" />
+				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Firstname</label>
-				<form:input path="firstname" cssClass="form-control" required="required" id="firstname" />
+				<form:input path="firstname" cssClass="form-control" required="required" id="firstname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Lastname</label>
-				<form:input path="lastname" cssClass="form-control" required="required" id="lastname" />
+				<form:input path="lastname" cssClass="form-control" required="required" id="lastname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<div class="form-group">
 				<label>Age</label>
-				<form:input path="age" type="number" cssClass="form-control" required="required" id="age" min="18" max="110"/>
+				<form:input path="age" type="number" cssClass="form-control" required="required" id="age" min="18" max="110" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
 			<button type="submit" class="btn btn-success">Add New Student</button>
 		</form:form>
