@@ -24,8 +24,9 @@
 		<form:form modelAttribute="student" method="post" action="${addURL}"
 			cssClass="form">
 			<div class="form-group">
-				<label>Fiscal Code</label>
-				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[a-zA-Z0-9\s]+"/>
+				<label>Fiscal Code (Insert 16 caracters with only uppercase and number)
+				</label>
+				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[A-Z0-9]+"/>
 			</div>
 			<div class="form-group">
 				<label>Firstname</label>
