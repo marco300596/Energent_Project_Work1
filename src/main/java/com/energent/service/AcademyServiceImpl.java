@@ -33,9 +33,9 @@ public class AcademyServiceImpl implements AcademyService {
 		int result = 2;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // used to inform the parsing function of the pattern used
 		LocalDate startDate = LocalDate.parse(start, formatter); // used to parse
-		startDate.withMonth(startDate.getMonthValue() - 1);
+		startDate.minusMonths(1);
 		LocalDate endDate = LocalDate.parse(end, formatter);
-		endDate.withMonth(endDate.getMonthValue() - 1);
+		endDate.minusMonths(1);
 		if(startDate.isBefore(endDate)) {
 			
 			result = 1;
@@ -56,6 +56,7 @@ public class AcademyServiceImpl implements AcademyService {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate actualDate = LocalDate.now();	//actual date of the system
+		actualDate.minusMonths(1);
 		LocalDate minexpectedDate=actualDate.minusYears(1);
 		LocalDate givenDate = LocalDate.parse(givenString, formatter);
 		return ((givenDate.isAfter(minexpectedDate)) && (givenDate.isBefore(actualDate)) && (givenDate.isEqual(actualDate)) && (givenDate.isEqual(minexpectedDate)));
@@ -98,6 +99,7 @@ public class AcademyServiceImpl implements AcademyService {
 		boolean res=false;
 		if(rightDate(academy.getStartDate(), academy.getEndDate()) == 0){ // see if the dates can be used
 			res = true;
+			/*
 			Academy academyToUpdate = findAcademybyId(academy.getCodeId());
 			academyToUpdate.setCodeId(academy.getCodeId());
 			academyToUpdate.setTitle(academy.getTitle());
@@ -105,7 +107,8 @@ public class AcademyServiceImpl implements AcademyService {
 			academyToUpdate.setStartDate(academy.getStartDate());
 			academyToUpdate.setEndDate(academy.getEndDate());
 			academyToUpdate.setStudents(academy.getStudents());
-			academyRepository.save(academyToUpdate);
+			*/
+			academyRepository.save(academy);
 			return res;
 		}
 		

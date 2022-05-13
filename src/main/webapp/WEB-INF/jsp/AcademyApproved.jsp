@@ -16,24 +16,27 @@
 <meta charset="UTF-8">
 <title>Update Academy Approved</title>
 </head>
-<body>
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto" style="margin-bottom: 10px; margin-top: 10px">
+<body background= "/Image/back.jpg">
+	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%">
 	<spring:url value="/academies" var="AcademiesURL" />
-	<form:form modelAttribute="academy" method="post" action="${AcademiesURL}" cssClass="form">
-		<p class="text-center" style="font-size: 50px;">the academy selected is now updated:</p>
-		<div class="form-group">
+	<form:form modelAttribute="academy" method="post" style = "background-color: #ffffff" action="${AcademiesURL}" cssClass="form">
+		<p/>
+		<p class="text-center" style="font-size: 30px;">The academy selected is now updated:</p>
+		<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 			<label>Academy Code</label>
 			<form:input path="codeId" cssClass="form-control" id="codeId" readonly="true"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 			<label>Academy Title</label>
 			<form:input path="title" cssClass="form-control" id="title" readonly="true"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 			<label>Location</label>
 			<form:input path="location" cssClass="form-control" id="location" readonly="true"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 		<label>Starting Date</label>
             <div class="form-group">
                 <div class="input-group date" id="datepicker1">
@@ -46,7 +49,7 @@
                 </div>
             </div>
            </div>
-		<div class="form-group">
+		<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 		<label>Ending Date</label>
                <div class="form-group">
                    <div class="input-group date" id="datepicker2">
@@ -59,11 +62,11 @@
                    </div>
                </div>
        	</div>
-		<div class="container" style="display:flex; width: 500px; margin-top: 20px;">
-		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-left: 10px; width: 200px; display: inline-block;">Go to Academy's list</button>
-		</div>
-		</form:form>
-		</div>
+		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-left: 10px; margin-bottom: 20px; width: 200px; display: inline-block;">Go to Academy's list</button>
+	</form:form>
+	</div>
+	</div>
+	</div>
 	<jsp:include page="Footer.jsp" />
 </body>
 </html>

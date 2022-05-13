@@ -22,36 +22,47 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
-	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+<body background= "/Image/back.jpg">
+	<div class="container" style="margin-bottom: 10px; margin-top: 10px;">
+	<!--  -->
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%">
+	<!--  -->
 		<spring:url value="/AcademyConfirm" var="addURL" />
-		<h2>Add Academy</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
-		<form:form modelAttribute="academy" method="post" action="${addURL}"
+		<form:form modelAttribute="academy" style="background-color: #ffffff" method="post" action="${addURL}"
 			cssClass="form">
-			<div class="form-row align-items-center">
-				<div class="col-sm-4">
+		<div class="col-sm-10">
+		<!--  -->
+		<h2></h2>
+		</div>
+		<div class="col-sm-10">
+		<h2 style="margin-top: 10px;">Add Academy</h2>
+		</div>
+		<!--  -->
+			<div class="form-row align-items-center" style="margin-top: 10px; margin-left: 10px;">
+				<div class="col-sm-10">
 					<label>Academy Code</label>
-					<form:input path="codeId" cssClass="form-control" id="codeId" size="10" pattern="[a-zA-Z0-9\s]+"/>
+					<form:input path="codeId" cssClass="form-control" id="codeId" pattern="[a-zA-Z0-9]+" oninvalid="setCustomValidity(this.willValidate?'':'Please insert a code made of only letters and numbers')"/>
 				</div>
 			</div>
-			<div class="form-row align-items-center">
-				<div class="col-sm-4">
+			<div class="form-row align-items-center" style="margin-top: 10px; margin-left: 10px;">
+				<div class="col-sm-10">
 					<label>Academy Title</label>
 					<form:input path="title" cssClass="form-control" id="title" required="required" pattern="[a-zA-Z0-9\s]+"/>
 				</div>
 			</div>
-			<div class="form-row align-items-center">
-				<div class="col-sm-4">
+			<div class="form-row align-items-center" style="margin-top: 10px; margin-left: 10px;">
+				<div class="col-sm-10">
 					<label>Location</label>
 					<form:input path="location" cssClass="form-control" id="location" required="required" pattern="[a-zA-Z0-9\s]+"/>
 				</div>
 			</div>
-			<div class="form-row align-items-center">
+			<div class="form-row align-items-center" style="margin-top: 10px; margin-left: 10px;">
 				<div class="col-sm-4">
 				<label>Starting Date</label>
 	            <div class="form-row align-items-center">
-					<div class="col-sm-4">
+					<div class="col-sm-10">
 					    <div class="input-group date" id="datepicker1">
 		                    <form:input path="startDate" type="text" class="form-control" id="startDate" required="required"/>
 		                    <span class="input-group-append">
@@ -64,13 +75,13 @@
 	            </div>
             	</div>
             </div>
-			<div class="form-row align-items-center">
+			<div class="form-row align-items-center" style="margin-top: 10px; margin-left: 10px;">
 				<div class="col-sm-4">
 				<label>Ending Date</label>
 	            <div class="form-row align-items-center">
-					<div class="col-sm-4">
+					<div class="col-sm-10">
 				    	<div class="input-group date" id="datepicker2">
-	                        <form:input path="endDate" type="text" class="form-control" id="endDate" required="required"/>
+	                        <form:input path="endDate" type="text" class="form-control" id="endDate" required="required" />
 	                        <span class="input-group-append">
 	                            <span class="input-group-text bg-white d-block">
 	                                <i class="fa fa-calendar"></i>
@@ -81,10 +92,14 @@
 	        	</div>
 	        	</div>
 	        	</div>
-			<button type="submit" class="btn btn-success">Add New Academy</button>
+			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">Add New Academy</button>
 		</form:form>
-
+		<!--  -->
+		<div class="container"></div>
+		</div>
 	</div>
+	</div>
+	<!--  -->
 	<jsp:include page="Footer.jsp" />
 	
 	<script type="text/javascript">

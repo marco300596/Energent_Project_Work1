@@ -22,7 +22,7 @@
   </button>
   <div class="collapse navbar-collapse"  id="navbarTogglerDemo01">
   <a href=/home>
-  	<img src ="/Image/logo-energent-colored.png" height="50" width="200" />
+  	<img src ="/Image/logo.png" height="50" width="100" />
   </a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 20px; height: 100%">
       <li class="nav-item" style="margin-right: 10px">

@@ -16,11 +16,12 @@
 <meta charset="UTF-8">
 <title>Confirm Academy Added</title>
 </head>
-<body>
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto" style="margin-bottom: 10px; margin-top: 10px">
+<body background= "/Image/back.jpg">
+	<div class = "container">
+	<div class="btn-group-vertical-center gap-2 col-10 mx-auto" style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
 	<spring:url value="/academies" var="AccademiesURL" />
 	<form:form modelAttribute="academy" method="post" action="${AccademiesURL}" cssClass="form">
-		<p class="text-center" style="font-size: 50px">This is the academy's detail you provided:</p>
+		<p class="text-center" style="font-size: 30px">This is the academy's detail you provided:</p>
 		<div class="form-group">
 			<label>Academy Code</label>
 			<form:input path="codeId" cssClass="form-control" id="codeId" readonly="true"/>
@@ -65,6 +66,9 @@
 			<form:form method="post" action="${AccademyURL}">
 				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Restart To Edit</button>
 			</form:form>
+			
+	<div><p style="visibility: hidden">.</p></div>
+	</div>
 	</div>
 	<jsp:include page="Footer.jsp" />
 

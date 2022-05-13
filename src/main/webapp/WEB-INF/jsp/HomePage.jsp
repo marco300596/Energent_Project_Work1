@@ -6,7 +6,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>	
+<head>
+
 <jsp:include page="Header.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -16,9 +17,9 @@
 <meta charset="UTF-8">
 <title>HomePage</title>
 </head>
-<body>
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto" style="margin-bottom: 10px">
-		<p class="text-center" style="font-size: 50px">Welcome to the academy management app</p>
+<body background= "/Image/back.jpg">
+	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
+		<p class="text-center" style="font-size: 40px">Welcome to the academy management app</p>
 		<div class="container" style="display:flex; width: 500px; margin-top: 20px;">
 			<spring:url value="/academiesHP" var="AccademyURL" />
 				<form:form method="post" action="${AccademyURL}">
@@ -29,6 +30,7 @@
 		 			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-left: 10px; width: 200px; display: inline-block;">Go to Global Report</button>
 				</form:form>
 		</div>
+		<div class="container"><p style="visibility: hidden">.</p></div>
 	</div>
 <jsp:include page="Footer.jsp" />
 </body>

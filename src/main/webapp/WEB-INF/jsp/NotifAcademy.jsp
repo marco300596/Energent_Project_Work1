@@ -15,18 +15,25 @@
 <meta charset="UTF-8">
 <title>Errore</title>
 </head>
-	<body>
+	<body background= "/Image/back.jpg">
 		<div class="container">
-		<spring:url value="/academies/update/${academy.codeId}" var="UpdateURL"/>
-		<spring:url value="/academy" var="AddURL"/>
+		<div class="form-group row">
+		<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
+		<spring:url value="/academies/${academy.codeId}/update" var="UpdateURL"/>
+		<spring:url value="/academy" var="AddURL" />
+		<form:form method="post" action="${UpdateURL}">
 			<c:set value="${academy}" var="academy">
-			<form:form method="post" action="${UpdateURL}">
-			 	<button type="submit" class="btn btn-success" role="button" href="${academy.codeId}">Update</button>
-			</form:form>
+			<p class="text-center" style="font-size: 25px; margin-top: 20px">It would appear that the accademy you just inserted 
+			was already in the system. Would you like to update it?</p>
+			 	<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;" href="${academy.codeId}">Update</button>
 			</c:set>
-			<form:form method="post" action="${AddURL}">
-				  <button type="submit" class="btn btn-success" role="button">New</button>
 			</form:form>
+			<form:form method="post" action="${AddURL}">
+				  <button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">New</button>
+			</form:form>
+			<div><p style="visibility: hidden;">.</p></div>
+		</div>
+		</div>
 		</div>
 <jsp:include page="Footer.jsp" />
 </body>

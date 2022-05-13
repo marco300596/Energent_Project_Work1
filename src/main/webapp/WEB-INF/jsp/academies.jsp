@@ -15,9 +15,9 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
+<body background= "/Image/back.jpg">
 	<div class="container" style="margin-bottom: 20px; margin-top: 20px">
-		<table class="table table-striped">
+		<table class="table table-striped table-dark">
 			<tbody>
 				<!--  items="${products}"<-> session.getAttribute("products") -->
 				

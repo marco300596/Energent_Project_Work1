@@ -16,12 +16,15 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
-	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+<body background= "/Image/back.jpg">
+	<div class="container" style= "margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; margin-bottom: 20px; width: 40%; background-color: #ffffff">
 		<spring:url value="/academies/${academy.codeId}/remove/confirm" var="removeURL" />
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="academy" method="post" action="${removeURL}"
 			cssClass="form">
+		<p/>
 		<p class="text-center" style="font-size: 25px; margin-top: 20px">Remove the following Academy</p>
 		<div class="form-group">
 				<label>Academy Code</label>
@@ -62,7 +65,7 @@
                 </div>
         	</div>
         	<p class="text-center" style="font-size: 25px; margin-top: 40px"> With the following student</p>
-        	<table class="table table-striped">
+        	<table class="table table-striped table-dark">
 			<tbody>
 				<c:forEach items="${students}" var="student">
 					<tr>
@@ -80,7 +83,10 @@
 		<form:form method="post" action="${academiesURL}">
 			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Return to Students Page</button>
 		</form:form>
-	</div>
+		</div>
+		</div>
+		<div class="push" style="margin-bottom: 50px;"></div>
+		</div>
 	<jsp:include page="Footer.jsp" />
 </body>
 </html>

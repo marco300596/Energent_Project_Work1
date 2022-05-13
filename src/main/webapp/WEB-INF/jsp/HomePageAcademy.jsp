@@ -16,9 +16,10 @@
 <meta charset="UTF-8">
 <title>Academy's HomePage</title>
 </head>
-<body>
-	<div class="btn-group-horizontal-center" style="margin-bottom: 10px; margin-top: 10px">
+<body background= "/Image/back.jpg">
+	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
 		<spring:url value="/academy" var="AccademyURL" />
+		<p class="text-center" style="font-size: 40px">What would you like to do?</p>
 		<form:form ModelAttribute="academy" method="post" action="${AccademyURL}">
 	 		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Add New Accademy</button>
 		</form:form>
@@ -26,6 +27,7 @@
 		<form:form ModelAttribute="academy" method="post" action="${AccademiesURL}">
 			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Go to Academy's list</button>
 		</form:form>
+		<div><p style="visibility: hidden">.</p></div>
 	</div>
 <jsp:include page="Footer.jsp" />
 </body>

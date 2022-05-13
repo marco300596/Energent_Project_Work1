@@ -22,26 +22,33 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
+<body background= "/Image/back.jpg">
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%; background-color: #ffffff;">
 		<spring:url value="/AcademyApproved" var="addURL" />
-		<h2>Update Academy</h2>
-		<!--ModelAttribute=n collegamento tra model e view     -->
-		<form:form modelAttribute="academy" method="post" action="${addURL}"
+		<form:form modelAttribute="academy"  method="post" action="${addURL}"
 			cssClass="form">
-			<div class="form-group">
+		<div class="col-sm-10">
+		<h2></h2>
+		</div>
+		<div class="col-sm-10">
+		<h2 style="margin-top: 10px">Update Academy</h2>
+		</div>
+		<!--ModelAttribute=n collegamento tra model e view     -->
+			<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 				<label>Academy Code:</label>
 				<form:input path="codeId" cssClass="form-control" id="codeId" readonly="true"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 				<label>Academy Title</label>
 				<form:input path="title" cssClass="form-control" id="title" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 				<label>Location</label>
 				<form:input path="location" cssClass="form-control" id="location" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 			<label>Starting Date</label>
 	            <div class="form-group">
 	                <div class="input-group date" id="datepicker1">
@@ -54,7 +61,7 @@
 	                </div>
 	            </div>
             </div>
-			<div class="form-group">
+			<div class="form-group" style="margin-top: 10px; margin-left: 10px; margin-right: 10px">
 			<label>Ending Date</label>
                 <div class="form-group">
                     <div class="input-group date" id="datepicker2">
@@ -67,9 +74,10 @@
                     </div>
                 </div>
         	</div>
-			<button type="submit" class="btn btn-success">Update Academy</button>
+			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 10px; margin-bottom: 10px">Update Academy</button>
 		</form:form>
-
+	</div>
+	</div>
 	</div>
 <jsp:include page="Footer.jsp" />
 	
