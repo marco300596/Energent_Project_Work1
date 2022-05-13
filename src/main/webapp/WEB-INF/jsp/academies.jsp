@@ -54,7 +54,7 @@
 		</table>
 			<spring:url value="/academy" var="addURL" />
 			<form:form method="post" action="${addURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-right: 50px; width: 200px; display: inline-block;">Add Academy</button>
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-right: 50px; width: 200px; display: inline-block;  margin-bottom: 50px">Add Academy</button>
 			</form:form>
 	</div>
 	<jsp:include page="Footer.jsp" />

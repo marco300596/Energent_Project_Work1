@@ -30,7 +30,6 @@ public class AcademyController {
 	 * quest'ultimo.
 	 */
 	Logger log = LoggerFactory.getLogger(this.getClass());
-	
 	@Autowired
 	private AcademyService academyService;
 	
@@ -38,7 +37,6 @@ public class AcademyController {
 	private StudentService studentService;
 	
 	private static ModelAndView mav = new ModelAndView();
-	private String page = "redirect:/academies";
 	
 	@GetMapping("/home")
 	public ModelAndView showHomePage() {
@@ -85,13 +83,15 @@ public class AcademyController {
 		 */
 		if(mav.getViewName() == "/ConfirmAcademyAdded") {
 			int res = academyService.addAcademy(academy);
-			if (res == 2)// in case the date inserted is not right
+			if (res == 2){// in case the date inserted is not right
 				
 				mav.setViewName("/academy");
-			if (res == 1) { // in case we inserted an already existing code
+				return mav;
+			}if (res == 1) { // in case we inserted an already existing code
 				
 				mav.setViewName("/NotifAcademy");
 				mav.addObject("academy",academy);
+				return mav;
 			}if(res == 0){ //in case everything checks out
 				
 				mav.setViewName("/academies");
@@ -100,57 +100,63 @@ public class AcademyController {
 				mav.addObject("academies",academies);
 				return mav;
 			}
-		}else {	//this part is in case we come from an update page
+		}if(mav.getViewName() == "/HomePageAcademy") {	//this part is in case we come from an update page
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			mav.setViewName("/academies");
-			log.info(message.getCode());
-			if(!(message.getCode() == null)) {
+			if(message.getCode() != null) {
 				
+				log.info(message.getCode());
 				List<Academy> academies = new ArrayList<>();
 				Academy academy1 = academyService.findAcademybyId(message.getCode());
 				academies.add(academy1);
+				log.info(message.getCode());
 				if(!(academies.get(0) == null))
 					mav.addObject("academies",academies);
 				return mav;
-			}if(!(message.getName() == null)) {
+			}if(!(message.getName() != "")) {
 				
 				List<Academy> academies = academyService.findAcademiesByTitle(message.getName());
 				mav.addObject("academies",academies);
 				return mav;
-			}if(!(message.getLocation() == null)) {
+			}if(!(message.getLocation() != "")) {
 				
 				List<Academy> academies = academyService.findAcademiesByLocation(message.getLocation());
 				mav.addObject("academies",academies);
 				return mav;
-			}if(!(message.getEdate()==null)){
-				if(!(message.getSdate()==null)){
-					if((!(message.getEdate().toLocalDate().format(formatter) == "01/01/1900"))&&(!(message.getSdate().toLocalDate().format(formatter) == "01/01/1900"))){
-						
-						List<Academy> academies = academyService.findAcademiesByStartAndEndDate(message.getEdate().toLocalDate().format(formatter), message.getSdate().toLocalDate().format(formatter));
-						mav.addObject("academies",academies);
-						return mav;
-					}
-				}if(!(message.getEdate().toLocalDate().format(formatter) == "01/01/1900")){
+			}
+			if((message.getEdate()!=null) && (message.getSdate()!=null)) {
+			if((!(message.getEdate().toLocalDate().format(formatter).equals("01/01/2000"))&&(!(message.getSdate().toLocalDate().format(formatter).equals("01/01/2000"))))){
+					
+					List<Academy> academies = academyService.findAcademiesByStartAndEndDate(message.getSdate().toLocalDate().format(formatter), message.getEdate().toLocalDate().format(formatter));
+					mav.addObject("academies",academies);
+					return mav;
+			}
+			}if(message.getEdate()!=null) {
+			if(!(message.getEdate().toLocalDate().format(formatter).equals("01/01/2000"))){
 					
 					List<Academy> academies = academyService.findAcademiesByEndDate(message.getEdate().toLocalDate().format(formatter));
 					mav.addObject("academies",academies);
 					return mav;
-				}
-			}if(!(message.getSdate()==null)){
-				if(!(message.getSdate().toLocalDate().format(formatter) == "01/01/1900")){
+			}
+			}if(message.getSdate()!=null) {
+			if(!(message.getSdate().toLocalDate().format(formatter).equals("01/01/2000"))){
 					
 					List<Academy> academies = academyService.findAcademiesByStartDate(message.getSdate().toLocalDate().format(formatter));
 					mav.addObject("academies",academies);
 					return mav;
-				}
+			}
 			}else {
-				
+			
 				List<Academy> academies = academyService.findAllAcademies();
 				mav.addObject("academies",academies);
 				return mav;
-			
 			}
-			return mav;
+		}else {
+			
+		mav.setViewName("/academies");
+		mav.addObject("message", new Message());
+		List<Academy> academies = academyService.findAllAcademies();
+		mav.addObject("academies",academies);
 		}
 		return mav;
 }

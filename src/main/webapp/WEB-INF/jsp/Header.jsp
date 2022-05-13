@@ -41,16 +41,7 @@
 	      	</button>
       	</form:form>
       </li>
-      <li class="nav-item" style="margin-right: 10px">
-        <spring:url value="/report" var="reportURL" />
-		<form:form method="post" action="${reportURL}" cssClass="form">
-      		<button type="submit" class="btn btn-dark text-nowrap">
-      			<img src ="/Image/report.png" height="25" width="30" style="margin-right: 10px"/>report
-      		</button>
-      	</form:form>
-      </li>
-    </ul>
-   
+    </ul> 
   </div>
 </nav>
 </body>

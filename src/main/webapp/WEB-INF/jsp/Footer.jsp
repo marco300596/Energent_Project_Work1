@@ -9,7 +9,7 @@
 <body>
 </body>
 <div class = "fixed-bottom">
-<footer style="background-color: #ffffff">
+<footer style="background-color: #ffffff;">
 	<div class="card-footer text-muted">
 		<p class="text-center" style="font-size: 20px;">
   		&copy; designed by: Antonio Manzo;  Jamir Ramos Atauje;  Casentini Marco;  Gianmarco Mazzola

@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,17 @@ import ch.qos.logback.classic.joran.action.LoggerContextListenerAction;
 @Service
 public class AcademyServiceImpl implements AcademyService {
 
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	AcademyRepository academyRepository;
 	
 	@Override
 	public Academy findAcademybyId(String codeId) {
+		
+		log.info("codeId " + codeId);
+		
 		Academy academy = null;
 		if (academyRepository.existsById(codeId)) 
 			academy = academyRepository.findById(codeId).get();
@@ -144,14 +152,30 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByStartDate(String startDate) {
 		
-		return academyRepository.findByStartDate(startDate);
-	}
+		List<Academy> resultAcademies = new ArrayList<>();
+		List<Academy> academies = findAllAcademies();
+		for (Academy academy : academies) {
+			int a = rightDate(startDate, academy.getStartDate());
+			if (a == 0||a == 1) {
+				resultAcademies.add(academy);
+			}
+		}
+		return resultAcademies;
+}
 
 	@Override
 	public List<Academy> findAcademiesByEndDate(String endDate) {
 		
-		return academyRepository.findByEndDate(endDate);
-	}
+		List<Academy> resultAcademies = new ArrayList<>();
+		List<Academy> academies = findAllAcademies();
+		for (Academy academy : academies) {
+			int a = rightDate(academy.getEndDate(), endDate);
+			if (a == 1||a == 0) {
+				resultAcademies.add(academy);
+			}
+		}
+		return resultAcademies;
+}
 	
 	@Override
 	public List<Academy> findAcademiesByStartAndEndDate(String startDate, String endDate) {
@@ -159,7 +183,9 @@ public class AcademyServiceImpl implements AcademyService {
 		List<Academy> resultAcademies = new ArrayList<>();
 		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
-			if ((rightDate(academy.getEndDate(), endDate)==1) && (rightDate(startDate, academy.getStartDate())==1)) {
+			int a = rightDate(academy.getEndDate(), endDate);
+			int b = rightDate(startDate, academy.getStartDate());
+			if ((a == 1||a == 0) && (b == 0||b == 1)) {
 				resultAcademies.add(academy);
 			}
 		}
