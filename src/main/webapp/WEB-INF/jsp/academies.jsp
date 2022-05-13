@@ -19,6 +19,7 @@
 	<div class="container" style="margin-bottom: 20px; margin-top: 20px">
 		<table class="table table-striped table-dark">
 			<tbody>
+			<form:form modelAttribute="message"></form:form>
 				<!--  items="${products}"<-> session.getAttribute("products") -->
 				
 				<c:forEach items="${academies}" var="academy">

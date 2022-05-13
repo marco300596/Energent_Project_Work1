@@ -1,7 +1,10 @@
 package com.energent.controller;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.coyote.http11.upgrade.UpgradeApplicationBufferHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.energent.bean.Message;
 import com.energent.entity.Academy;
 import com.energent.entity.Student;
 import com.energent.service.AcademyService;
@@ -51,6 +55,7 @@ public class AcademyController {
 		Academy academy = new Academy();
 		
 		mav.addObject("academy", academy);
+		mav.addObject("message", new Message());
 		
 		return mav;
 	}
@@ -72,7 +77,7 @@ public class AcademyController {
 	}
 	
 	@PostMapping("/academies")
-	public ModelAndView showAcademies(@ModelAttribute("academy")Academy academy) {
+	public ModelAndView showAcademies(@ModelAttribute("academy")Academy academy, @ModelAttribute("message")Message message) {
 		/*
 		 * this method is in charge of check if everything is inserted correctly
 		 * and to call the page and method that is in charge with the 
@@ -89,28 +94,66 @@ public class AcademyController {
 				mav.addObject("academy",academy);
 			}if(res == 0){ //in case everything checks out
 				
-				mav.setViewName(page);
+				mav.setViewName("/academies");
+				mav.addObject("message", new Message());
+				List<Academy> academies = academyService.findAllAcademies();
+				mav.addObject("academies",academies);
+				return mav;
 			}
 		}else {	//this part is in case we come from an update page
-			mav.setViewName(page);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			mav.setViewName("/academies");
+			log.info(message.getCode());
+			if(!(message.getCode() == null)) {
+				
+				List<Academy> academies = new ArrayList<>();
+				Academy academy1 = academyService.findAcademybyId(message.getCode());
+				academies.add(academy1);
+				if(!(academies.get(0) == null))
+					mav.addObject("academies",academies);
+				return mav;
+			}if(!(message.getName() == null)) {
+				
+				List<Academy> academies = academyService.findAcademiesByTitle(message.getName());
+				mav.addObject("academies",academies);
+				return mav;
+			}if(!(message.getLocation() == null)) {
+				
+				List<Academy> academies = academyService.findAcademiesByLocation(message.getLocation());
+				mav.addObject("academies",academies);
+				return mav;
+			}if(!(message.getEdate()==null)){
+				if(!(message.getSdate()==null)){
+					if((!(message.getEdate().toLocalDate().format(formatter) == "01/01/1900"))&&(!(message.getSdate().toLocalDate().format(formatter) == "01/01/1900"))){
+						
+						List<Academy> academies = academyService.findAcademiesByStartAndEndDate(message.getEdate().toLocalDate().format(formatter), message.getSdate().toLocalDate().format(formatter));
+						mav.addObject("academies",academies);
+						return mav;
+					}
+				}if(!(message.getEdate().toLocalDate().format(formatter) == "01/01/1900")){
+					
+					List<Academy> academies = academyService.findAcademiesByEndDate(message.getEdate().toLocalDate().format(formatter));
+					mav.addObject("academies",academies);
+					return mav;
+				}
+			}if(!(message.getSdate()==null)){
+				if(!(message.getSdate().toLocalDate().format(formatter) == "01/01/1900")){
+					
+					List<Academy> academies = academyService.findAcademiesByStartDate(message.getSdate().toLocalDate().format(formatter));
+					mav.addObject("academies",academies);
+					return mav;
+				}
+			}else {
+				
+				List<Academy> academies = academyService.findAllAcademies();
+				mav.addObject("academies",academies);
+				return mav;
+			
+			}
+			return mav;
 		}
 		return mav;
-	}
-	
-	@GetMapping("/academies")
-	public ModelAndView showAllAcademies() {
-		/*
-		 * this method is called to list every academies
-		 * stored inside the DB
-		 */
-		mav.setViewName("/academies");
-		List<Academy> academies = academyService.findAllAcademies();
-		/*
-		 * inserisce i products in sessione
-		 */
-		mav.addObject("academies",academies);
-		return mav;
-	}
+}
 	
 	@PostMapping("/academies/{codeId}/update")
 	public ModelAndView updateAcademy(@PathVariable String codeId) {

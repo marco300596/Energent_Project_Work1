@@ -18,15 +18,39 @@
 </head>
 <body background= "/Image/back.jpg">
 	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
-		<spring:url value="/academy" var="AccademyURL" />
+		<spring:url value="/academy" var="AcademyURL" />
 		<p class="text-center" style="font-size: 40px">What would you like to do?</p>
-		<form:form ModelAttribute="academy" method="post" action="${AccademyURL}">
+		<form:form ModelAttribute="academy" method="post" action="${AcademyURL}">
 	 		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Add New Accademy</button>
 		</form:form>
-		<spring:url value="/academies" var="AccademiesURL" />
-		<form:form ModelAttribute="academy" method="post" action="${AccademiesURL}">
+		<spring:url value="/academies" var="AcademiesURL" />
+		<form:form ModelAttribute="academy" method="post" action="${AcademiesURL}">
 			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Go to Academy's list</button>
 		</form:form>
+		<p/>
+		<div class="input-group">
+		<spring:url value="/academies" var="AcademiesURL" />
+		<form:form modelAttribute="message" style="background-color: #ffffff" method="post" action="${AcademiesURL}"
+			cssClass="form">
+		  	<div class="col-sm-10">
+				<label>Academy Code</label>
+				<form:input path="code" cssClass="form-control" id="codeId" pattern="[a-zA-Z0-9]+" oninvalid="setCustomValidity(this.willValidate?'':'Please insert a code made of only letters and numbers')"/>
+			</div>
+			<div class="col-sm-10">
+				<label>Academy Name</label>
+				<form:input path="name" cssClass="form-control" id="codeId" pattern="[a-zA-Z0-9]+" oninvalid="setCustomValidity(this.willValidate?'':'Please insert a code made of only letters and numbers')"/>
+			</div>
+			<div class="col-sm-10">
+				<label>Starting date</label>
+				<form:input path="sdate" type="date" value="1900-01-01" cssClass="form-control" id="codeId"/>
+			</div>
+			<div class="col-sm-10">
+				<label>Ending Date</label>
+				<form:input path="edate" type="date" value="1900-01-01" cssClass="form-control" id="codeId"/>
+			</div>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Go to the filtered Academy's list</button>
+		</form:form>
+		</div>
 		<div><p style="visibility: hidden">.</p></div>
 	</div>
 <jsp:include page="Footer.jsp" />

@@ -21,8 +21,10 @@ public class AcademyServiceImpl implements AcademyService {
 	
 	@Override
 	public Academy findAcademybyId(String codeId) {
-		
-		return academyRepository.findById(codeId).get();
+		Academy academy = null;
+		if (academyRepository.existsById(codeId)) 
+			academy = academyRepository.findById(codeId).get();
+		return academy;
 	}
 	
 	/*
@@ -149,6 +151,19 @@ public class AcademyServiceImpl implements AcademyService {
 	public List<Academy> findAcademiesByEndDate(String endDate) {
 		
 		return academyRepository.findByEndDate(endDate);
+	}
+	
+	@Override
+	public List<Academy> findAcademiesByStartAndEndDate(String startDate, String endDate) {
+		
+		List<Academy> resultAcademies = new ArrayList<>();
+		List<Academy> academies = findAllAcademies();
+		for (Academy academy : academies) {
+			if ((rightDate(academy.getEndDate(), endDate)==1) && (rightDate(startDate, academy.getStartDate())==1)) {
+				resultAcademies.add(academy);
+			}
+		}
+		return resultAcademies;
 	}
 
 }

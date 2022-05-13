@@ -17,4 +17,5 @@ public interface AcademyService {
 	public List<Academy> findAcademiesByLocation(String location);
 	public List<Academy> findAcademiesByStartDate(String startDate);
 	public List<Academy> findAcademiesByEndDate(String endDate);
+	public List<Academy> findAcademiesByStartAndEndDate(String startDate, String endDate);
 }
