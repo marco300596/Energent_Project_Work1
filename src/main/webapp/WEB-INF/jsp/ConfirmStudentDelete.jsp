@@ -15,8 +15,10 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
-	<div class="container">
+<body background= "/Image/back.jpg">
+	<div class="container" style= "margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; margin-bottom: 20px; width: 40%; background-color: #ffffff">
 		<spring:url value="/academies/{codeId}/students/remove/confirm" var="removeURL" />
 		<h2>Remove Student</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
@@ -45,6 +47,9 @@
 		<form:form method="post" action="${studentsURL}">
 			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Return to Students Page</button>
 		</form:form>
+	<div><p style="visibility: hidden">.</p></div>
+	</div>
+	</div>
 	</div>
 <jsp:include page="Footer.jsp" />
 </body>

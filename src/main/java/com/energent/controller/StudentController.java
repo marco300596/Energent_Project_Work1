@@ -35,7 +35,7 @@ public class StudentController {
 	
 @PostMapping("/academies/{codeId}/students")
 public ModelAndView showListStudent(@PathVariable String codeId, @ModelAttribute("student")Student student) {
-	log.info(mav.getViewName());
+	log.info(codeId);
 	if(mav.getViewName() == "/student") {
 		
 		boolean i = studentService.addStudent(student, codeId);

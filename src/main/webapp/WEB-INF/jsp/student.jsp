@@ -17,32 +17,42 @@
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<body background= "/Image/back.jpg">
+	<div class="container" style="margin-bottom: 10px; margin-top: 10px;">
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%">
 		<spring:url value="/academies/${academy.codeId}/students" var="addURL" />
-		<h2>Add Student</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
-		<form:form modelAttribute="student" method="post" action="${addURL}"
-			cssClass="form">
-			<div class="form-group">
+		<form:form modelAttribute="student" method="post" style="background-color: #ffffff" action="${addURL}" cssClass="form">
+		<div class="col-sm-10">
+		<h2></h2>
+		</div>
+		<div class="col-sm-10">
+		<h2 style="margin-top: 15px">Add Student</h2>
+		</div>
+			<div class="col-sm-10">
 				<label>Fiscal Code (Insert 16 caracters with only uppercase and number)
 				</label>
 				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[A-Z0-9]+"/>
 			</div>
-			<div class="form-group">
+			<div class="col-sm-10">
 				<label>Firstname</label>
 				<form:input path="firstname" cssClass="form-control" required="required" id="firstname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<div class="form-group">
+			<div class="col-sm-10">
 				<label>Lastname</label>
 				<form:input path="lastname" cssClass="form-control" required="required" id="lastname" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<div class="form-group">
+			<div class="col-sm-10">
 				<label>Age</label>
 				<form:input path="age" type="number" cssClass="form-control" required="required" id="age" min="18" max="110" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<button type="submit" class="btn btn-success">Add New Student</button>
+			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">Add New Student</button>
 		</form:form>
 	</div>
+	</div>
+	</div>
+	
 <jsp:include page="Footer.jsp" />
 </body>
 </html>

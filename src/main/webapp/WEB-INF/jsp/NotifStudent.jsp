@@ -15,18 +15,25 @@
 <meta charset="UTF-8">
 <title>Errore</title>
 </head>
-	<body>
+	<body background= "/Image/back.jpg">
 		<div class="container">
-		<spring:url value="/academies/${academy.codeId}/students/update/${student.fCode}" var="UpdateURL"/>
-		<spring:url value="/academies/${academy.codeId}/students/student" var="AddURL"/>
-			<c:set value="${student}" var="student">
-			<form:form method="post" action="${UpdateURL}">
-			 	<button type="submit" class="btn btn-success" role="button">Update Old Student</button>
-			</form:form>
-			</c:set>
-			<form:form method="post" action="${AddURL}">
-				  <button type="submit" class="btn btn-success" role="button">Restart With A New Student</button>
-			</form:form>
+			<div class="form-group row">
+				<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
+				<spring:url value="/academies/${academy.codeId}/students/update/${student.fCode}" var="UpdateURL"/>
+				<spring:url value="/academies/${academy.codeId}/students/student" var="AddURL"/>
+					<c:set value="${student}" var="student">
+					<p class="text-center" style="font-size: 25px; margin-top: 20px">It would appear that the Student you just inserted 
+					was already in the system. Would you like to update it?</p>
+					<form:form method="post" action="${UpdateURL}">
+					 	<button type="submit" class="btn btn-warning" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Update Old Student</button>
+					</form:form>
+					</c:set>
+					<form:form method="post" action="${AddURL}">
+						<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Restart With A New Student</button>
+					</form:form>
+					<div><p style="visibility: hidden;">.</p></div>
+				</div>
+			</div>
 		</div>
 <jsp:include page="Footer.jsp" />
 	</body>

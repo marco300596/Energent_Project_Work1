@@ -23,11 +23,14 @@
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<body background= "/Image/back.jpg">
+	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%; background-color: #ffffff;">
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<spring:url value="/academies/${academy.codeId}/students/update/approved" var="updateURL" />
 		<spring:url value="/academies/${academy.codeId}/students" var="studentsURL" />
-		<h2>Add Student</h2>
+		<h2 style="margin-bottom: 10px; margin-top: 10px">Add Student</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="student" method="post" action="${updateURL}"
 			cssClass="form">
@@ -47,11 +50,14 @@
 				<label>Age:</label>
 				<form:input path="age" cssClass="form-control" id="age" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<button type="submit" class="btn btn-success">Update Student</button>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Update Student</button>
 		</form:form>
 		<form:form method="post" action="${studentsURL}">
-			<button type="submit" class="btn btn-success">Back</button>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Back</button>
 		</form:form>
+		<div><p style="visibility: hidden">.</p></div>
+		</div>
+		</div>
 		</div>
 <jsp:include page="Footer.jsp" />
 </body>

@@ -21,13 +21,17 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto">
-		<p class="text-center" style="font-size: 50px;"> Student successfully removed</p>
-		<spring:url value="/academies/${academy.codeId}/students" var="okURL" />
-		<form:form modelAttribute="student" method="post" action="${okURL}" cssClass="form">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Go to Student's list</button>
-		</form:form>
+	<body background= "/Image/back.jpg">
+	<div class="container" style= "margin-top: 10px">
+		<div class="form-group row">
+			<div class="container" style="float: left; margin-bottom: 20px; width: 40%; background-color: #ffffff">
+				<p class="text-center" style="font-size: 40px;"> Student successfully removed</p>
+				<spring:url value="/academies/${academy.codeId}/students" var="okURL" />
+				<form:form modelAttribute="student" method="post" action="${okURL}" cssClass="form">
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Go to Student's list</button>
+				</form:form>
+			</div>
+		</div>
 	</div>
 <jsp:include page="Footer.jsp" />
 </body>

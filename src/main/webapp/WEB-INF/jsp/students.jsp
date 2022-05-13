@@ -16,9 +16,10 @@
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body>
+	<body background= "/Image/back.jpg">
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
 		<p class="text-center" style="font-size: 40px;">Academy's Student</p>
-		<table class="table table-striped">
+		<table class="table table-striped table-dark">
 			<tbody>
 				<c:forEach items="${students}" var="student">
 					<tr>

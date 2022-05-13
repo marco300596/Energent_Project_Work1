@@ -22,12 +22,15 @@
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body>
-<div class="btn-group-vertical-center gap-2 col-6 mx-autop">
+	<body background= "/Image/back.jpg">
+	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
+	<div class="form-group row">
+	<div class="container" style="float: left; width: 40%; background-color: #ffffff;">
 		<spring:url value="/academies/${academy.codeId}/students" var="okURL" />
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="student" method="post" action="${okURL}"
 			cssClass="form">
-			<p class="text-center" style="font-size: 50px;">The Selected Student is now updated with the following data:</p>
+			<p class="text-center" style="font-size: 40px;">The Selected Student is now updated with the following data:</p>
 			<div class="form-group">
 				<label>Fiscal Code</label>
 				<form:input path="fCode" cssClass="form-control" id="fCode" readonly="true"/>
@@ -46,6 +49,9 @@
 			</div>
 			<button type="submit" class="btn btn-success">Go to Student's list</button>
 		</form:form>
+		<div><p style="visibility: hidden;">.</p></div>
+		</div>
+		</div>
 	</div>
 <jsp:include page="Footer.jsp" />
 </body>
