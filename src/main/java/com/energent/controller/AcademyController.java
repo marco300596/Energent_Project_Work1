@@ -28,7 +28,6 @@ public class AcademyController {
 	 * e se in questo modo si può tenere traccia degli eventi che affronta
 	 * quest'ultimo.
 	 */
-	Logger log = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private AcademyService academyService;
 	
@@ -141,11 +140,9 @@ public class AcademyController {
 			mav.setViewName("/academies");
 			if(message.getCode() != null) {
 				
-				log.info(message.getCode());
 				List<Academy> academies = new ArrayList<>();
 				Academy academy1 = academyService.findAcademybyId(message.getCode());
 				academies.add(academy1);
-				log.info(message.getCode());
 				if(!(academies.get(0) == null))
 					mav.addObject("academies",academies);
 				return mav;

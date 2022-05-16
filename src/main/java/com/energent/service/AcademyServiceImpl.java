@@ -25,6 +25,7 @@ public class AcademyServiceImpl implements AcademyService {
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // used to inform the parsing function of the pattern used
 	String systemDate = LocalDate.now().format(formatter); //initialize a string with the value of the actual date
 	List<Academy> resultAcademies = new ArrayList<>();
+	List<Academy> academies = findAllAcademies();
 	
 	
 	/*
@@ -149,7 +150,6 @@ public class AcademyServiceImpl implements AcademyService {
 		 * thisa method is called to list all the accademies actually active
 		 */
 		
-		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = compareToActualDate(LocalDate.parse(academy.getEndDate(), formatter));
 			if (a == 0){
@@ -176,7 +176,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByStartDate(String startDate) {
 		
-		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(startDate, academy.getStartDate());
 			if (a == 0||a == 1) {
@@ -189,7 +188,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByEndDate(String endDate) {
 		
-		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(academy.getEndDate(), endDate);
 			if (a == 1||a == 0) {
@@ -202,7 +200,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByStartAndEndDate(String startDate, String endDate) {
 		
-		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(academy.getEndDate(), endDate);
 			int b = rightDate(startDate, academy.getStartDate());
@@ -218,8 +215,6 @@ public class AcademyServiceImpl implements AcademyService {
 		/*
 		 * this method will return all the academies that were taken in a year
 		 */
-		
-		List<Academy> academies = academyRepository.findAll();
 		for(Academy academy : academies)
 			if (matchingDate(academy.getStartDate(), academy.getEndDate(), LocalDate.parse(systemDate, formatter)))
 				resultAcademies.add(academy);
