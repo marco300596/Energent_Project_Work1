@@ -4,7 +4,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.coyote.http11.upgrade.UpgradeApplicationBufferHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +95,7 @@ public class AcademyController {
 				
 				mav.setViewName("/academies");
 				mav.addObject("message", new Message());
-				List<Academy> academies = academyService.findAllAcademies();
+				List<Academy> academies = academyService.findAcademiesForTable();
 				mav.addObject("academies",academies);
 				return mav;
 			}
