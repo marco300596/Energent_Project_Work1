@@ -12,7 +12,7 @@ public interface StudentService {
 
 	public boolean addStudent(Student student, String id);
 	public void UpdateStudent(Student student, Academy academy);
-	public void removeStudent(String fCode);
+	public boolean removeStudent(String fCode);
 	public Student findStudentById(String fCode);
 	public List<Student> findStudentsByAcademy(Academy academy);
 	public List<Student> findStudentsByFirstnameAndLastname(String firstname, String lastname);

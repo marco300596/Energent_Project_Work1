@@ -48,16 +48,17 @@ public class StudentServiceImpl implements StudentService {
 }
 	
 	@Override
-	public void removeStudent(String fCode) {
+	public boolean removeStudent(String fCode) {
 
 		studentRepository.deleteById(fCode);
+		return studentRepository.existsById(fCode);
 	}
 
 	@Override
 	public List<Student> findStudentsByAcademy(Academy academy) {
 		
 		List<Student> students = studentRepository.findByAcademy(academy);		
-		return  students;
+		return students;
 		
 	}
 

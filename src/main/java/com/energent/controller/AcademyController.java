@@ -45,6 +45,43 @@ public class AcademyController {
 		return mav;
 	}
 	
+	@GetMapping("/reportHP")
+	public ModelAndView showReportHP() {
+		mav.setViewName("/HomePageReport");
+		return mav;
+	}
+	
+	@GetMapping("/totalReport")
+	public ModelAndView showReport() {
+		
+		mav.setViewName("/AcademiesReport");
+		List<Academy> academiesList = new ArrayList<>();
+		List<Student> studentList = new ArrayList<>();
+		academiesList = academyService.findAllAcademies();
+		for(Academy academy : academiesList) {
+			studentList.addAll(studentService.findStudentsByAcademy(academy));
+		}
+		mav.addObject("academies", academiesList);
+		mav.addObject("students", studentList);
+		return mav;
+		
+	}
+	
+	@GetMapping("/annualReport")
+	public ModelAndView showAnnualReport() {
+		
+		mav.setViewName("/AcademiesReport");
+		List<Academy> academiesList = new ArrayList<>();
+		List<Student> studentList = new ArrayList<>();
+		academiesList = academyService.findAllAcademiesForAnnualReport();
+		for(Academy academy : academiesList) {
+			studentList.addAll(studentService.findStudentsByAcademy(academy));
+		}
+		mav.addObject("academies", academiesList);
+		mav.addObject("students", studentList);
+		return mav;
+		
+	}
 	@PostMapping("/academiesHP")
 	public ModelAndView showAcademyHomePage() {
 		
@@ -73,33 +110,33 @@ public class AcademyController {
 		return mav;
 	}
 	
+	@PostMapping("/confirm/{codeId}")
+	public ModelAndView resultAcademy(@PathVariable String codeId, @ModelAttribute("academy") Academy academy) {
+		
+		int res = academyService.addAcademy(academy);
+		if (res == 2){// in case the date inserted is not right
+			
+			mav.setViewName("/ErrorAcademy");
+			return mav;
+		}if (res == 1) { // in case we inserted an already existing code
+			
+			mav.setViewName("/NotifAcademy");
+			mav.addObject("academy",academy);
+			return mav;
+		} //in case everything checks out
+			
+			mav.setViewName("/ConfirmAcademy");
+			return mav;	
+	}
+	
 	@PostMapping("/academies")
-	public ModelAndView showAcademies(@ModelAttribute("academy")Academy academy, @ModelAttribute("message")Message message) {
+	public ModelAndView showAcademies(@ModelAttribute("message")Message message) {
 		/*
 		 * this method is in charge of check if everything is inserted correctly
 		 * and to call the page and method that is in charge with the 
 		 * system's response.
 		 */
-		if(mav.getViewName() == "/ConfirmAcademyAdded") {
-			int res = academyService.addAcademy(academy);
-			if (res == 2){// in case the date inserted is not right
-				
-				mav.setViewName("/academy");
-				return mav;
-			}if (res == 1) { // in case we inserted an already existing code
-				
-				mav.setViewName("/NotifAcademy");
-				mav.addObject("academy",academy);
-				return mav;
-			}if(res == 0){ //in case everything checks out
-				
-				mav.setViewName("/academies");
-				mav.addObject("message", new Message());
-				List<Academy> academies = academyService.findAcademiesForTable();
-				mav.addObject("academies",academies);
-				return mav;
-			}
-		}if(mav.getViewName() == "/HomePageAcademy") {	//this part is in case we come from an update page
+		if(mav.getViewName() == "/HomePageAcademy") {	//this part is in case we come from an update page
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			mav.setViewName("/academies");
 			if(message.getCode() != null) {
@@ -154,7 +191,7 @@ public class AcademyController {
 			
 		mav.setViewName("/academies");
 		mav.addObject("message", new Message());
-		List<Academy> academies = academyService.findAllAcademies();
+		List<Academy> academies = academyService.findAcademiesForTable();
 		mav.addObject("academies",academies);
 		}
 		return mav;
@@ -166,7 +203,7 @@ public class AcademyController {
 		 * this method take a selected academy from the academies page and update it
 		 * this academy will be shown in its info documented in the page
 		 */
-		mav.setViewName("/updateAcademy");
+		mav.setViewName("/UpdateAcademy");
 		
 		Academy academy = academyService.findAcademybyId(codeId);
 		mav.addObject("academy", academy);
@@ -182,11 +219,10 @@ public class AcademyController {
 		 * page
 		 */
 		if (!academyService.updateAcademy(academy)) // in case the date inserted is not right
-			mav.setViewName("/academy");
+			mav.setViewName("/ErrorAcademy");
 		else {	// in case everything checks out we have to set a new page to land to otherwise we will be stuck in a loop
-			academyService.updateAcademy(academy);
 			Academy academy1 = academyService.findAcademybyId(academy.getCodeId());
-			mav.setViewName("/AcademyApproved");
+			mav.setViewName("/ConfirmAcademyUpdate");
 			mav.addObject("academy", academy1);
 		}
 		return mav;
@@ -232,8 +268,11 @@ public class AcademyController {
 		List<Student> students = studentService.findStudentsByAcademy(academyService.findAcademybyId(codeId));
 		for(Student student: students)
 			studentService.removeStudent(student.getfCode());
-		academyService.removeAcademy(codeId);
-		mav.setViewName("/RemoveAcademy");
+		if(!academyService.removeAcademy(codeId)) {
+			mav.setViewName("/RemoveAcademy");
+		}else{
+			mav.setViewName("/ErrorAcademy");
+		}
 		return mav;
 		
 	}

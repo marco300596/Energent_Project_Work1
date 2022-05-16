@@ -22,16 +22,14 @@
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
 <body background= "/Image/back.jpg">
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto">
-	<div class="form-group row">
-	<div class="container" style="float: left; width: 40%">
-		<spring:url value="/academies" var="okURL" />
-		<form:form modelAttribute="academy" style="background-color: #ffffff" method="post" action="${okURL}" cssClass="form">
-		<p class="text-center" style="font-size: 50px;"> Academy successfully removed</p>
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Go to Academy's list</button>
-		</form:form>
-	</div>
-	</div>
+<div class="btn-group-vertical-center gap-2 col-6 mx-auto" style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
+	<spring:url value="/academies" var="AccademiesURL" />
+		<p class="text-center" style="font-size: 50px">The selected academy was succesfully removed.</p>
+		<p class="text-center" style="font-size: 50px">Return to academies's list </p>
+			<form:form method="post" action="${AccademiesURL}">
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Academy home page</button>
+			</form:form>
+	<div class="container"><p style="visibility: hidden">.</p></div>
 	</div>
 	<jsp:include page="Footer.jsp" />
 </body>

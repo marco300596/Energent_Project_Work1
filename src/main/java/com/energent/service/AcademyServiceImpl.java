@@ -24,6 +24,7 @@ public class AcademyServiceImpl implements AcademyService {
 	
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // used to inform the parsing function of the pattern used
 	String systemDate = LocalDate.now().format(formatter); //initialize a string with the value of the actual date
+	List<Academy> resultAcademies = new ArrayList<>();
 	
 	
 	/*
@@ -65,7 +66,7 @@ public class AcademyServiceImpl implements AcademyService {
 		 * this method is used to find the academies to insert in the annual report
 		 */
 		
-		LocalDate minexpectedDate=actualDate.minusYears(1);
+		LocalDate minexpectedDate = actualDate.minusYears(1);
 		LocalDate givenStartingDate = LocalDate.parse(givenStartingDateString, formatter);
 		LocalDate givenEndingDate = LocalDate.parse(givenEndingDateString, formatter);
 		return (((givenStartingDate.isAfter(minexpectedDate)) || givenStartingDate.isEqual(minexpectedDate)) && ((givenEndingDate.isBefore(actualDate)) || (givenEndingDate.isEqual(actualDate))));
@@ -126,9 +127,10 @@ public class AcademyServiceImpl implements AcademyService {
 	}
 
 	@Override
-	public void removeAcademy(String codeId) {
+	public boolean removeAcademy(String codeId) {
 
 		academyRepository.deleteById(codeId);
+		return academyRepository.existsById(codeId);
 	}
 	
 	@Override
@@ -146,7 +148,7 @@ public class AcademyServiceImpl implements AcademyService {
 		/*
 		 * thisa method is called to list all the accademies actually active
 		 */
-		List<Academy> resultAcademies = new ArrayList<>();
+		
 		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = compareToActualDate(LocalDate.parse(academy.getEndDate(), formatter));
@@ -174,7 +176,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByStartDate(String startDate) {
 		
-		List<Academy> resultAcademies = new ArrayList<>();
 		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(startDate, academy.getStartDate());
@@ -188,7 +189,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByEndDate(String endDate) {
 		
-		List<Academy> resultAcademies = new ArrayList<>();
 		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(academy.getEndDate(), endDate);
@@ -202,7 +202,6 @@ public class AcademyServiceImpl implements AcademyService {
 	@Override
 	public List<Academy> findAcademiesByStartAndEndDate(String startDate, String endDate) {
 		
-		List<Academy> resultAcademies = new ArrayList<>();
 		List<Academy> academies = findAllAcademies();
 		for (Academy academy : academies) {
 			int a = rightDate(academy.getEndDate(), endDate);
@@ -214,16 +213,17 @@ public class AcademyServiceImpl implements AcademyService {
 		return resultAcademies;
 	}
 	
-	public List<Academy> findAllAcademiesForAnnualReport(String year){
+	@Override
+	public List<Academy> findAllAcademiesForAnnualReport(){
 		/*
 		 * this method will return all the academies that were taken in a year
 		 */
-		List<Academy> academies = new ArrayList<>();
-		List<Academy> academies1 = academyRepository.findAll();
-		for(Academy academy : academies1)
+		
+		List<Academy> academies = academyRepository.findAll();
+		for(Academy academy : academies)
 			if (matchingDate(academy.getStartDate(), academy.getEndDate(), LocalDate.parse(systemDate, formatter)))
-				academies.add(academy);
-		return academies;
+				resultAcademies.add(academy);
+		return resultAcademies;
 	}
 	
 }

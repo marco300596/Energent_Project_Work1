@@ -21,7 +21,7 @@
 <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
 </head>
-<body>
+<body background= "/Image/back.jpg">
 	<body background= "/Image/back.jpg">
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px">
 	<div class="form-group row">

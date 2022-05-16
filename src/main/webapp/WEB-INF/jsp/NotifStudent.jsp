@@ -19,8 +19,8 @@
 		<div class="container">
 			<div class="form-group row">
 				<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
-				<spring:url value="/academies/${academy.codeId}/students/update/${student.fCode}" var="UpdateURL"/>
-				<spring:url value="/academies/${academy.codeId}/students/student" var="AddURL"/>
+				<spring:url value="/academies/${codeId}/students/update/${student.fCode}" var="UpdateURL"/>
+				<spring:url value="/academies/${codeId}/students/student" var="AddURL"/>
 					<c:set value="${student}" var="student">
 					<p class="text-center" style="font-size: 25px; margin-top: 20px">It would appear that the Student you just inserted 
 					was already in the system. Would you like to update it?</p>

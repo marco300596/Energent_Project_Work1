@@ -21,7 +21,7 @@
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px;">
 	<div class="form-group row">
 	<div class="container" style="float: left; width: 40%">
-		<spring:url value="/academies/${academy.codeId}/students" var="addURL" />
+		<spring:url value="/academies/${academy.codeId}/students/add/${student.fCode}" var="addURL" />
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="student" method="post" style="background-color: #ffffff" action="${addURL}" cssClass="form">
 		<div class="col-sm-10">
