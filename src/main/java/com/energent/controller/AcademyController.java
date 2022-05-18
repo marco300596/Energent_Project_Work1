@@ -50,7 +50,7 @@ public class AcademyController {
 	}
 	
 	@GetMapping("/totalReport")
-	public ModelAndView showReport() {
+	public ModelAndView showTotalReport() {
 		
 		mav.setViewName("/AcademiesReport");
 		List<Academy> academiesList = new ArrayList<>();
@@ -110,7 +110,7 @@ public class AcademyController {
 	}
 	
 	@PostMapping("/AcademyConfirm")
-	public ModelAndView confirmAcademy(@ModelAttribute ("academy") Academy academy) {
+	public ModelAndView showConfirmAcademyAdded(@ModelAttribute ("academy") Academy academy) {
 		
 		mav.setViewName("/ConfirmAcademyAdded");
 		mav.addObject("academy", academy);
@@ -118,7 +118,7 @@ public class AcademyController {
 	}
 	
 	@PostMapping("/confirm/{codeId}")
-	public ModelAndView resultAcademy(@PathVariable String codeId, @ModelAttribute("academy") Academy academy) {
+	public ModelAndView resultAddedAcademy(@PathVariable String codeId, @ModelAttribute("academy") Academy academy) {
 		
 		int res = academyService.addAcademy(academy);
 		if (res == 2){// in case the date inserted is not right
@@ -223,7 +223,7 @@ public class AcademyController {
 }
 	
 	@PostMapping("/academies/{codeId}/update")
-	public ModelAndView updateAcademy(@PathVariable String codeId) {
+	public ModelAndView showUpdateAcademy(@PathVariable String codeId) {
 		/*
 		 * this method take a selected academy from the academies page and update it
 		 * this academy will be shown in its info documented in the page
@@ -250,22 +250,6 @@ public class AcademyController {
 			mav.setViewName("/ConfirmAcademyUpdate");
 			mav.addObject("academy", academy1);
 		}
-		return mav;
-	}
-	
-	@GetMapping("/academies/{codeId}/addStudent")
-	public ModelAndView newStudentForAcademy(@PathVariable String id) {
-		/*
-		 * this method is called when we click the "add student" button inside the
-		 * "student's list" in the academy page, it will pass a student object, for
-		 * the student we will insert and the academy object to link to it, this 
-		 * will be passed inside the page and the collected from the StudentController
-		 */
-		Academy academy = academyService.findAcademybyId(id);
-		mav.setViewName("newStudent");
-		mav.addObject("academy", academy);
-		mav.addObject("student", new Student());
-		
 		return mav;
 	}
 	

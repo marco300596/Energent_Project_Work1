@@ -69,7 +69,7 @@ public class StudentController {
 	}
 
 	@PostMapping("/academies/{codeId}/students/student") /* richiesta su student.jsp*/
-	public ModelAndView AddStudent(@PathVariable String codeId){
+	public ModelAndView addNewStudent(@PathVariable String codeId){
 		
 		Academy academy = academyService.findAcademybyId(codeId);
 		Student student = new Student();
@@ -95,7 +95,7 @@ public class StudentController {
 	}
 
 	@PostMapping ("/academies/{codeId}/students/update/approved")
-	public ModelAndView showUpdateStudent(@PathVariable String codeId, @ModelAttribute("student") Student student) {
+	public ModelAndView ConfirmUpdate(@PathVariable String codeId, @ModelAttribute("student") Student student) {
 		
 		studentService.UpdateStudent(student, academyService.findAcademybyId(codeId));
 		mav.setViewName("/ConfirmStudentUpdate");
@@ -116,7 +116,7 @@ public class StudentController {
 	}
 
 	@PostMapping("/academies/{codeId}/students/remove/confirm")
-	public ModelAndView editRemove(@PathVariable String codeId,@ModelAttribute("student")Student student) {
+	public ModelAndView showRemoveStudent(@PathVariable String codeId,@ModelAttribute("student")Student student) {
 		
 		if(!studentService.removeStudent(student.getfCode())) {
 			mav.setViewName("/RemoveStudent");

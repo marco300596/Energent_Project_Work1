@@ -33,13 +33,14 @@ public class StudentServiceImpl implements StudentService {
 	
 	public void UpdateStudent(Student student, Academy academy) {
 	
-	Student studentToUpdate = studentRepository.findById(student.getfCode()).get();
-	studentToUpdate.setfCode(student.getfCode());
-	studentToUpdate.setFirstname(student.getFirstname());
-	studentToUpdate.setLastname(student.getLastname());
-	studentToUpdate.setAge(student.getAge());
-	studentToUpdate.setAcademy(academy);
-	studentRepository.save(studentToUpdate);
+	/*
+	 * studentToUpdate.setfCode(student.getfCode());
+	 * studentToUpdate.setFirstname(student.getFirstname());
+	 * studentToUpdate.setLastname(student.getLastname());
+	 * studentToUpdate.setAge(student.getAge());
+	 */
+	student.setAcademy(academy);
+	studentRepository.save(student);
   
 	
 }
