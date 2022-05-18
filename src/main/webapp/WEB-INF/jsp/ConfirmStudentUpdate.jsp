@@ -47,8 +47,15 @@
 				<label>Age</label>
 				<form:input path="age" cssClass="form-control" id="age" readonly="true"/>
 			</div>
+			<div class="form-group">
+				<form:form modelAttribute="academy" method="post" action="${okURL}"	cssClass="form">
+				<label>Academy</label>
+				<form:input path="codeId" cssClass="form-control" id="academy" readonly="true"/>
+				
+			</div>
 			<button type="submit" class="btn btn-success">
 			<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Go to Student's list</button>
+			</form:form>
 		</form:form>
 		<div><p style="visibility: hidden;">.</p></div>
 		</div>

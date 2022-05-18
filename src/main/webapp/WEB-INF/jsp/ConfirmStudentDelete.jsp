@@ -19,7 +19,7 @@
 	<div class="container" style= "margin-top: 10px">
 	<div class="form-group row">
 	<div class="container" style="float: left; margin-bottom: 20px; width: 40%; background-color: #ffffff">
-		<spring:url value="/academies/{codeId}/students/remove/confirm" var="removeURL" />
+		<spring:url value="/academies/${academy.codeId}/students/remove/confirm" var="removeURL" />
 		<h2>Remove Student</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="student" method="post" action="${removeURL}"

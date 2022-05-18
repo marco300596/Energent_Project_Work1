@@ -44,8 +44,7 @@ public class StudentController {
 	@PostMapping("/academies/{codeId}/students/add/{fCode}")
 	public ModelAndView addStudent(@ModelAttribute("student")Student student, @PathVariable String codeId, @PathVariable String fCode) {
 		
-		boolean i = studentService.addStudent(student, codeId);
-		if(i != true){
+		if(!studentService.addStudent(student, codeId)){
 			mav.setViewName("/NotifStudent");
 			mav.addObject("student", student);
 		}else {
@@ -91,8 +90,8 @@ public class StudentController {
 
 	@PostMapping ("/academies/{codeId}/students/update/{fCode}")
 	public ModelAndView showUpdateStudent(@PathVariable String codeId, @PathVariable String fCode) {
-		Academy academy=academyService.findAcademybyId(codeId);
-		Student student =studentService.findStudentById(fCode);
+		Academy academy = academyService.findAcademybyId(codeId);
+		Student student = studentService.findStudentById(fCode);
 		student.setAcademy(academy);
 		mav.setViewName("/UpdateStudent");
 		mav.addObject("student", student);
@@ -106,6 +105,7 @@ public class StudentController {
 		studentService.UpdateStudent(student, academyService.findAcademybyId(codeId));
 		mav.setViewName("/ConfirmStudentUpdate");
 		mav.addObject("student", student);
+		mav.addObject("academy", academyService.findAcademybyId(codeId));
 		return mav;
 	}
 
@@ -123,7 +123,7 @@ public class StudentController {
 	@PostMapping("/academies/{codeId}/students/remove/confirm")
 	public ModelAndView editRemove(@PathVariable String codeId,@ModelAttribute("student")Student student) {
 		
-		if(studentService.removeStudent(student.getfCode())) {
+		if(!studentService.removeStudent(student.getfCode())) {
 			mav.setViewName("/RemoveStudent");
 		}else {
 			mav.setViewName("/ErrorStudent");
