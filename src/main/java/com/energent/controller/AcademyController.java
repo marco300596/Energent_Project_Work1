@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.aspectj.weaver.tools.cache.AsynchronousFileCacheBacking.ClearCommand;
-import org.jboss.logging.*;
 
 import com.energent.bean.Message;
 import com.energent.entity.Academy;
@@ -24,7 +22,6 @@ import com.energent.service.StudentService;
 @Controller
 public class AcademyController {
 	
-	Logger log = Logger.getLogger(this.getClass());
 	/*
 	 * è da chiedere a salvatore se il mav può essere salvato staticamente
 	 * e se in questo modo si può tenere traccia degli eventi che affronta

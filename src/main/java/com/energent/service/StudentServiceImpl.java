@@ -2,7 +2,6 @@ package com.energent.service;
 
 import java.util.List;
 
-import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +11,6 @@ import com.energent.repository.AcademyRepository;
 import com.energent.repository.StudentRepository;
 @Service
 public class StudentServiceImpl implements StudentService {
-	
-	Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	StudentRepository studentRepository;
