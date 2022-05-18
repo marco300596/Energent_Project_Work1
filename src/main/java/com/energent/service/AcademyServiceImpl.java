@@ -5,8 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +14,6 @@ import com.energent.repository.AcademyRepository;
 @Service
 public class AcademyServiceImpl implements AcademyService {
 
-	
-	Logger log = LoggerFactory.getLogger(this.getClass());
-	
 	@Autowired
 	AcademyRepository academyRepository;
 	
@@ -75,8 +70,6 @@ public class AcademyServiceImpl implements AcademyService {
 	
 	@Override
 	public Academy findAcademybyId(String codeId) {
-		
-		log.info("codeId " + codeId);
 		
 		Academy academy = null;
 		if (academyRepository.existsById(codeId)) 
