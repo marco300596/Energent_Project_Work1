@@ -53,7 +53,7 @@
 				<form:input path="codeId" cssClass="form-control" id="academy" readonly="true"/>
 				
 			</div>
-			<button type="submit" class="btn btn-success">
+			<button type="submit" class="btn btn-primary">
 			<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Go to Student's list</button>
 			</form:form>
 		</form:form>

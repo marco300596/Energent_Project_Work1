@@ -23,7 +23,7 @@
 				<spring:url value="/academies/${codeId}/students/student" var="AddURL"/>
 					<c:set value="${student}" var="student">
 					<p class="text-center" style="font-size: 25px; margin-top: 20px">It would appear that the Student you just inserted 
-					was already in the system. Would you like to update it?</p>
+					was already in the system. Would you like to update it? This could also change the academy this student is associated with</p>
 					<form:form method="post" action="${UpdateURL}">
 					 	<button type="submit" class="btn btn-warning" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
 					 	<img src ="/Image/updated.png" height="25" width="30" style="margin-right: 10px"/>Update Old Student</button>

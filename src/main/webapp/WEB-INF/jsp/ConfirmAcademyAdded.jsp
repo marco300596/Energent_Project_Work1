@@ -65,7 +65,7 @@
 	</form:form>
 		<spring:url value="/academy" var="AccademyURL" />
 			<form:form method="post" action="${AccademyURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
+				<button type="submit" class="btn btn-danger" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
 				<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Restart To Edit</button>
 			</form:form>
 			

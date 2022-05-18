@@ -37,11 +37,13 @@
 			<label>Student Age</label>
 			<form:input path="age" cssClass="form-control" id="age" readonly="true"/>
 		</div>
-		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Add Student & Go To Student's List</button>
+		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+			<img src ="/Image/add-user.png" height="25" width="30" style="margin-right: 10px"/>Add Student & Go To Student's List</button>
 	</form:form>
 		<spring:url value="/academies/${codeId}/students/student" var="StudentURL" />
 			<form:form method="post" action="${StudentURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Restart To Edit</button>
+				<button type="submit" class="btn btn-danger" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
+					<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Restart To Edit</button>
 			</form:form>
 		<div class="container"><p style="visibility: hidden">.</p></div>
 	</div>
