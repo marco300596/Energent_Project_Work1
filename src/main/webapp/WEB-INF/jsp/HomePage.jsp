@@ -18,17 +18,19 @@
 <title>HomePage</title>
 </head>
 <body background= "/Image/back.jpg">
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
-		<p class="text-center" style="font-size: 40px">Welcome to the academy management app</p>
+	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff; overflow: auto;">
 		<div class="text-center">
+		<p class="text-center" style="font-size: 40px">Welcome to the academy management app</p>
 		<div class="btn-group text-center">
 			<spring:url value="/academiesHP" var="AccademyURL" />
 				<form:form method="post" action="${AccademyURL}">
-					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">Go to Academy HomePage</button>
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="width: 200px;">
+					<img src ="/Image/home.png" height="25" width="30" style="margin-right: 10px"/>Go to Academy HomePage</button>
 				</form:form>
 			<spring:url value="/reportHP" var="ReportURL" />
 				<form:form method="get" action="${ReportURL}">
-					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">Go To Report</button>
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">
+					<img src ="/Image/report-home.png" height="25" width="30" style="margin-right: 10px"/>Go To Report</button>
 				</form:form>
 		</div>
 		</div>

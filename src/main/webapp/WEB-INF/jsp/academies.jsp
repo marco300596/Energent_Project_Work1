@@ -32,19 +32,22 @@
 						<td>
 							<spring:url value="/academies/${academy.codeId}/update" var="editURL" />
 							<form:form method="post" action="${editURL}">
-							<button type="submit" class="btn btn-success" role="button" href="${editURL}">Update</button>
+							<button type="submit" class="btn btn-info" role="button" href="${editURL}">
+							<img src ="/Image/updated.png" height="25" width="30" style="margin-right: 10px"/>Update</button>
 							</form:form>
 						</td>
 						<td>
 							<spring:url value="/academies/${academy.codeId}/remove" var="deleteURL" />
 							<form:form method="post" action="${deleteURL}">
-								<button type="submit" class="btn btn-danger" role="button">Delete</button>
+								<button type="submit" class="btn btn-danger" role="button">
+								<img src ="/Image/delete.png" height="25" width="30" style="margin-right: 10px"/>Delete</button>
 							</form:form>
 						</td>
 						<td>
 							<spring:url value="/academies/${academy.codeId}/students" var="studentURL" />
 							<form:form method="post" action="${studentURL}">
-							<button type="submit" class="btn btn-success" role="button" href="${academy.codeId}">Students</button>
+							<button type="submit" class="btn btn-success" role="button" href="${academy.codeId}">
+							<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Students</button>
 							</form:form>
 						</td>
 							<!-- href invia sempre richieste di get, se volessimo un post bisogna SEMPRE specificarlo in form nella sezione method -->
@@ -54,7 +57,8 @@
 		</table>
 			<spring:url value="/academy" var="addURL" />
 			<form:form method="post" action="${addURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-right: 50px; width: 200px; display: inline-block;  margin-bottom: 50px">Add Academy</button>
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-right: 50px; width: 200px; display: inline-block;  margin-bottom: 50px">
+				<img src ="/Image/add.png" height="25" width="30" style="margin-right: 10px"/>Add Academy</button>
 			</form:form>
 	</div>
 	<jsp:include page="Footer.jsp" />

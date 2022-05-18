@@ -11,9 +11,9 @@ public class Student {
 	@Id
 	@Column(length=16, nullable=false)
 	private String fCode;
-	@Column(length=10, nullable=false)
+	@Column(nullable=false)
 	private String firstname;
-	@Column(length=10, nullable=false)
+	@Column(nullable=false)
 	private String lastname;
 	@Column(nullable=false)
 	private int age;

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container" style="margin-top: 100px">
+</div>
 </body>
 <div class = "fixed-bottom">
 <footer style="background-color: #ffffff;">

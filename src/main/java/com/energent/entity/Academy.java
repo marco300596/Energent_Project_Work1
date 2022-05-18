@@ -12,15 +12,15 @@ import javax.persistence.OneToMany;
 public class Academy {
 
 	@Id
-	@Column(length=10)
+	@Column
 	private String codeId;
-	@Column(length=20)
+	@Column
 	private String title;
-	@Column(length=20)
+	@Column
 	private String location;
-	@Column(length=10)
+	@Column
 	private String startDate;
-	@Column(length=10)
+	@Column
 	private String endDate;
 
 	@OneToMany(mappedBy = "academy")

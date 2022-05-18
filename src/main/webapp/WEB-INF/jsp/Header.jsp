@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="/Image/favicon-96x96.png" sizes="32x32" type="/favicon-96x96.png">
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
@@ -15,12 +16,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
-<body>
+<header class="fixed-top">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse"  id="navbarTogglerDemo01">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
   <a href=/home>
   	<img src ="/Image/logo.png" height="50" width="100" />
   </a>
@@ -41,8 +42,20 @@
 	      	</button>
       	</form:form>
       </li>
+      <li class="nav-item">
+      	<spring:url value="/reportHP" var="reportURL" />
+		<form:form method="get" action="${reportURL}" cssClass="form">
+      		<button type="submit" class="btn btn-dark text-nowrap">
+	      		<img src ="/Image/report.png" height="25" width="30" style="margin-right: 10px"/>Report Home Page
+	      	</button>
+      	</form:form>
+      </li>
     </ul> 
   </div>
 </nav>
+</header>
+<body>
+<div class="container" style="margin-bottom: 70px">
+</div>
 </body>
 </html>

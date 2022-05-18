@@ -37,7 +37,7 @@
 			<label>Student Age</label>
 			<form:input path="age" cssClass="form-control" id="age" readonly="true"/>
 		</div>
-		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Go To Student's List</button>
+		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Add Student & Go To Student's List</button>
 	</form:form>
 		<spring:url value="/academies/${codeId}/students/student" var="StudentURL" />
 			<form:form method="post" action="${StudentURL}">

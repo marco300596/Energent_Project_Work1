@@ -20,10 +20,10 @@
 	<body background= "/Image/back.jpg">
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px;">
 	<div class="form-group row">
-	<div class="container" style="float: left; width: 40%">
+	<div class="container" style="float: left; width: 40%; background-color: #ffffff">
 		<spring:url value="/academies/${academy.codeId}/students/add/${student.fCode}" var="addURL" />
 		<!--ModelAttribute=n collegamento tra model e view     -->
-		<form:form modelAttribute="student" method="post" style="background-color: #ffffff" action="${addURL}" cssClass="form">
+		<form:form modelAttribute="student" method="post" action="${addURL}" cssClass="form">
 		<div class="col-sm-10">
 		<h2></h2>
 		</div>
@@ -33,7 +33,7 @@
 			<div class="col-sm-10">
 				<label>Fiscal Code (Insert 16 caracters with only uppercase and number)
 				</label>
-				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[A-Z0-9]+"/>
+				<form:input path="fCode" cssClass="form-control" required="required" id="fCode" pattern="[A-Z0-9]+" maxlength="16" minlength="16"/>
 			</div>
 			<div class="col-sm-10">
 				<label>Firstname</label>
@@ -45,10 +45,17 @@
 			</div>
 			<div class="col-sm-10">
 				<label>Age</label>
-				<form:input path="age" type="number" cssClass="form-control" required="required" id="age" min="18" max="110" pattern="[a-zA-Z0-9\s]+"/>
+				<form:input path="age" type="number" cssClass="form-control" required="required" id="age" min="18" max="110" pattern="[0-9]*"/>
 			</div>
-			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">Add New Student</button>
+			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px;">
+			<img src ="/Image/add-user.png" height="25" width="30" style="margin-right: 10px"/>Add New Student</button>
 		</form:form>
+		<spring:url value="/academies/${academy.codeId}/students" var="studentURL" />
+		<form:form method="post" action="${studentURL}">
+			<button type="submit" class="btn btn-danger" role="button" href="${academy.codeId}" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Back</button>
+		</form:form>
+		<div class="container"></div>
 	</div>
 	</div>
 	</div>

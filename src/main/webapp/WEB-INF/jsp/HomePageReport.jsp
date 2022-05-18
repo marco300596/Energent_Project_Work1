@@ -24,11 +24,13 @@
 		<div class="btn-group text-center">
 			<spring:url value="/annualReport" var="AnnualReportURL" />
 				<form:form method="get" action="${AnnualReportURL}">
-					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">This Year's Report</button>
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">
+					<img src ="/Image/report-annuale.png" height="25" width="30" style="margin-right: 10px"/>This Year's Report</button>
 				</form:form>
 			<spring:url value="/totalReport" var="TotalReportURL" />
 				<form:form method="get" action="${TotalReportURL}">
-					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">Total Report</button>
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="margin-left: 30px; width: 200px;">
+					<img src ="/Image/report-totale.png" height="25" width="30" style="margin-right: 10px"/>Total Report</button>
 				</form:form>
 		</div>
 		</div>

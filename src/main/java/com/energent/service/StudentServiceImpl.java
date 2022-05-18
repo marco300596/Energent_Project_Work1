@@ -64,7 +64,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<Student> findStudentsByFirstnameAndLastname(String firstname, String lastname) {
-		// TODO Auto-generated method stub
+		
 		return studentRepository.findByFirstnameAndLastname(firstname, lastname);
 	}
 	

@@ -41,11 +41,13 @@
 				<label>Age</label>
 				<form:input path="age" cssClass="form-control" id="age" readonly="true" />
 			</div>
-			<button type="submit" class="btn btn-danger" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Confirm</button>
+			<button type="submit" class="btn btn-danger" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">
+			<img src ="/Image/confirmation.png" height="25" width="30" style="margin-right: 10px"/>Confirm Removing Student</button>
 		</form:form>
 		<spring:url value="/academies/${academy.codeId}/students" var="studentsURL"/>
 		<form:form method="post" action="${studentsURL}">
-			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Return to Students Page</button>
+			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Return to Students Page</button>
 		</form:form>
 	<div><p style="visibility: hidden">.</p></div>
 	</div>

@@ -17,15 +17,17 @@
 <title>Academy's HomePage</title>
 </head>
 <body background= "/Image/back.jpg">
-	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 10px; margin-top: 10px; background-color: #ffffff">
+	<div class="btn-group-vertical-center gap-2 col-6 mx-auto"  style="margin-bottom: 50px; margin-top: 10px; background-color: #ffffff">
 		<spring:url value="/academy" var="AcademyURL" />
 		<p class="text-center" style="font-size: 40px">What would you like to do?</p>
 		<form:form modelAttribute="academy" method="post" action="${AcademyURL}">
-	 		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Add New Accademy</button>
+	 		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+	 		<img src ="/Image/add.png" height="25" width="30" style="margin-right: 10px"/>Add New Accademy</button>
 		</form:form>
 		<spring:url value="/academies" var="AcademiesURL" />
 		<form:form modelAttribute="academy" method="post" action="${AcademiesURL}">
-			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Go to Academy's list</button>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
+			<img src ="/Image/home.png" height="25" width="30" style="margin-right: 10px"/>Go to Academy's list</button>
 		</form:form>
 		<p/>
 		<div class="input-group">
@@ -52,7 +54,8 @@
 				<label>Ending Date</label>
 				<form:input path="edate" type="date" value="2000-01-01" cssClass="form-control" id="codeId"/>
 			</div>
-			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Go to the filtered Academy's list</button>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-top: 10px; width: 210px; margin-left: 15px">
+			<img src ="/Image/ricerca.png" height="15" width="15" style="margin-right: 5px"/>Go to the filtered Academy's list</button>
 		</form:form>
 		</div>
 		<div><p style="visibility: hidden">.</p></div>

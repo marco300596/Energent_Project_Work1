@@ -77,11 +77,13 @@
 				</c:forEach>
 			</tbody>
 			</table>	
-        	<button type="submit" class="btn btn-danger" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Confirm</button>
+        	<button type="submit" class="btn btn-danger" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">
+        	<img src ="/Image/confirmation.png" height="25" width="30" style="margin-right: 10px"/>Confirm Remove Academy</button>
 		</form:form>
 		<spring:url value="/academies" var="academiesURL"/>
 		<form:form method="post" action="${academiesURL}">
-			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">Return to Students Page</button>
+			<button type="submit" class="btn btn-success" style="display: block; margin: 0 auto; margin-bottom: 10px; margin-top: 10px; width: 200px;">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Return to Academies's List</button>
 		</form:form>
 		</div>
 		</div>

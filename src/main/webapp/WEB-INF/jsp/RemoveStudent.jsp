@@ -26,9 +26,10 @@
 		<div class="form-group row">
 			<div class="container" style="float: left; margin-bottom: 20px; width: 40%; background-color: #ffffff">
 				<p class="text-center" style="font-size: 40px;"> Student successfully removed</p>
-				<spring:url value="/academies/${academy.codeId}/students" var="okURL" />
+				<spring:url value="/academies/${codeId}/students" var="okURL" />
 				<form:form modelAttribute="student" method="post" action="${okURL}" cssClass="form">
-					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Go to Student's list</button>
+					<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+					<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Go to Student's list</button>
 				</form:form>
 			</div>
 		</div>

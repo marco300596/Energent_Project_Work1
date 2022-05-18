@@ -27,6 +27,7 @@
 	<div class="form-group row">
 	<div class="container" style="float: left; width: 40%; background-color: #ffffff;">
 		<spring:url value="/AcademyApproved" var="addURL" />
+		<spring:url value="/academies" var="AcademiesURL" />
 		<form:form modelAttribute="academy"  method="post" action="${addURL}"
 			cssClass="form">
 		<div class="col-sm-10">
@@ -74,7 +75,12 @@
                     </div>
                 </div>
         	</div>
-			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 10px; margin-bottom: 10px">Update Academy</button>
+			<button type="submit" class="btn btn-info" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+			<img src ="/Image/confirmation.png" height="25" width="30" style="margin-right: 10px"/>Update Academy</button>
+		</form:form>
+		<form:form method="post" action="${AcademiesURL}">
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Back</button>
 		</form:form>
 	</div>
 	</div>

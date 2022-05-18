@@ -47,7 +47,8 @@
 				<label>Age</label>
 				<form:input path="age" cssClass="form-control" id="age" readonly="true"/>
 			</div>
-			<button type="submit" class="btn btn-success">Go to Student's list</button>
+			<button type="submit" class="btn btn-success">
+			<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Go to Student's list</button>
 		</form:form>
 		<div><p style="visibility: hidden;">.</p></div>
 		</div>

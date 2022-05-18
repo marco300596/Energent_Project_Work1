@@ -30,13 +30,15 @@
 						<td>
 							<spring:url value="/academies/${academy.codeId}/students/update/${student.fCode}" var="editURL" />
 							<form:form method ="post" action="${editURL}">
-								<button type="submit" class="btn btn-success" role="button">Update</button>
+								<button type="submit" class="btn btn-primary" role="button">
+								<img src ="/Image/updated.png" height="25" width="30" style="margin-right: 10px"/>Update</button>
 							</form:form>
 						</td>
 						<td>
 							<spring:url value="/academies/${academy.codeId}/students/remove/${student.fCode}" var="deleteStudentURL" /> 
 							<form:form method ="post" action="${deleteStudentURL}">
-								<button type="submit" class="btn btn-danger" role="button">DeleteStudent</button>
+								<button type="submit" class="btn btn-danger" role="button">
+								<img src ="/Image/delete.png" height="25" width="30" style="margin-right: 10px"/>DeleteStudent</button>
 							</form:form>
 						</td>
 					</tr>
@@ -46,7 +48,8 @@
 		
 		<spring:url value="/academies/${academy.codeId}/students/student" var="addStudentURL" /> 
 		<form:form method ="post" action="${addStudentURL}">
-			<button type="submit" class="btn btn-success" role="button">AddStudent</button>
+			<button type="submit" class="btn btn-success" role="button" style="margin-bottom: 50px;">
+			<img src ="/Image/add-user.png" height="25" width="30" style="margin-right: 10px"/>AddStudent</button>
 		</form:form>
 	</div>
 <jsp:include page="Footer.jsp" />

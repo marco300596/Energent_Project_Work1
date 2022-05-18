@@ -52,7 +52,8 @@
 		</table>
 			<spring:url value="/home" var="academiesURL" />
 			<form:form method="get" action="${academiesURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; width: 200px; display: inline-block;  margin-bottom: 50px">Return To HomePage</button>
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; width: 200px; display: inline-block;  margin-bottom: 50px">
+				<img src ="/Image/home.png" height="25" width="30" style="margin-right: 10px"/>Return To HomePage</button>
 			</form:form>
 	</div>
 	<jsp:include page="Footer.jsp" />

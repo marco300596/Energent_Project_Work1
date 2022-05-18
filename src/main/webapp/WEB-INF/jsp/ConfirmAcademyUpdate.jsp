@@ -62,7 +62,8 @@
                    </div>
                </div>
        	</div>
-		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-left: 10px; margin-bottom: 20px; width: 200px; display: inline-block;">Go to Academy's list</button>
+		<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="flex: 1; margin-left: 10px; margin-bottom: 20px; width: 200px; display: inline-block;">
+		<img src ="/Image/home.png" height="25" width="30" style="margin-right: 10px"/>Go to Academy's list</button>
 	</form:form>
 	</div>
 	</div>

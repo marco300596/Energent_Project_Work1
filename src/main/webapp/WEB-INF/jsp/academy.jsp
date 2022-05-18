@@ -26,11 +26,11 @@
 	<div class="container" style="margin-bottom: 10px; margin-top: 10px;">
 	<!--  -->
 	<div class="form-group row">
-	<div class="container" style="float: left; width: 40%">
+	<div class="container" style="float: left; width: 40%; background-color: #ffffff">
 	<!--  -->
 		<spring:url value="/AcademyConfirm" var="addURL" />
 		<!--ModelAttribute=n collegamento tra model e view     -->
-		<form:form modelAttribute="academy" style="background-color: #ffffff" method="post" action="${addURL}"
+		<form:form modelAttribute="academy" method="post" action="${addURL}"
 			cssClass="form">
 		<div class="col-sm-10">
 		<!--  -->
@@ -92,7 +92,13 @@
 	        	</div>
 	        	</div>
 	        	</div>
-			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">Add New Academy</button>
+			<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left: 15px; margin-bottom: 10px">
+			<img src ="/Image/add.png" height="25" width="30" style="margin-right: 10px"/>Add New Academy</button>
+		</form:form>
+		<spring:url value="/academiesHP" var="homeURL" />
+		<form:form method="post" action="${homeURL}">
+			<button type="submit" class="btn btn-danger" role="button" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Back</button>
 		</form:form>
 		<!--  -->
 		<div class="container"></div>

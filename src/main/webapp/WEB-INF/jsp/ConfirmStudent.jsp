@@ -18,7 +18,8 @@
 		<p class="text-center" style="font-size: 50px"> Return to home page  </p>
 		<spring:url value="/academies/${codeId}/students" var="StudentsURL" />
 			<form:form method="post" action="${StudentsURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Student's list</button>
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
+				<img src ="/Image/students.png" height="25" width="30" style="margin-right: 10px"/>Student's list</button>
 			</form:form>
 			<div class="container"><p style="visibility: hidden">.</p></div>
 	</div>

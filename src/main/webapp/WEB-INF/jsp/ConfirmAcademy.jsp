@@ -18,7 +18,8 @@
 		<p class="text-center" style="font-size: 50px">The requested operation was successful </p>
 		<p class="text-center" style="font-size: 50px"> Return to home page </p>
 			<form:form method="post" action="${AccademiesURL}">
-				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">Academy home page</button>
+				<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" type="button" style="display: block; margin: 0 auto; margin-top: 10px; width: 200px;">
+				<img src ="/Image/homepage.png" height="25" width="30" style="margin-right: 10px"/>Academy home page</button>
 			</form:form>
 	<div class="container"><p style="visibility: hidden">.</p></div>
 	</div>

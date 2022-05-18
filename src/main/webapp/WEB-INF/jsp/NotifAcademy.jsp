@@ -25,7 +25,7 @@
 			<c:set value="${academy}" var="academy">
 			<p class="text-center" style="font-size: 25px; margin-top: 20px">It would appear that the accademy you just inserted 
 			was already in the system. Would you like to update it?</p>
-			 	<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;" href="${academy.codeId}">Update</button>
+			 	<button type="submit" class="btn btn-warning" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;" href="${academy.codeId}">Update</button>
 			</c:set>
 			</form:form>
 			<form:form method="post" action="${AddURL}">

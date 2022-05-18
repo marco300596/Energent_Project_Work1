@@ -30,7 +30,7 @@
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<spring:url value="/academies/${academy.codeId}/students/update/approved" var="updateURL" />
 		<spring:url value="/academies/${academy.codeId}/students" var="studentsURL" />
-		<h2 style="margin-bottom: 10px; margin-top: 10px">Add Student</h2>
+		<h2 style="margin-bottom: 10px; margin-top: 10px">Update Student</h2>
 		<!--ModelAttribute=n collegamento tra model e view     -->
 		<form:form modelAttribute="student" method="post" action="${updateURL}"
 			cssClass="form">
@@ -50,10 +50,12 @@
 				<label>Age:</label>
 				<form:input path="age" cssClass="form-control" id="age" pattern="[a-zA-Z0-9\s]+"/>
 			</div>
-			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Update Student</button>
+			<button type="submit" class="btn btn-info" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+			<img src ="/Image/confirmation.png" height="25" width="30" style="margin-right: 10px"/>Update Student</button>
 		</form:form>
 		<form:form method="post" action="${studentsURL}">
-			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">Back</button>
+			<button type="submit" class="btn btn-success" data-bs-toggle="button" autocomplete="off" style="display: block; margin: 0 auto; margin-bottom: 10px; width: 200px;">
+			<img src ="/Image/back-arrow.png" height="25" width="30" style="margin-right: 10px"/>Back</button>
 		</form:form>
 		<div><p style="visibility: hidden">.</p></div>
 		</div>

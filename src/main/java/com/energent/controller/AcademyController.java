@@ -4,8 +4,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.aspectj.weaver.tools.cache.AsynchronousFileCacheBacking.ClearCommand;
+import org.jboss.logging.*;
 
 import com.energent.bean.Message;
 import com.energent.entity.Academy;
@@ -20,9 +20,11 @@ import com.energent.entity.Student;
 import com.energent.service.AcademyService;
 import com.energent.service.StudentService;
 
+
 @Controller
 public class AcademyController {
 	
+	Logger log = Logger.getLogger(this.getClass());
 	/*
 	 * è da chiedere a salvatore se il mav può essere salvato staticamente
 	 * e se in questo modo si può tenere traccia degli eventi che affronta
@@ -57,13 +59,17 @@ public class AcademyController {
 		List<Academy> academiesList = new ArrayList<>();
 		List<Student> studentList = new ArrayList<>();
 		academiesList = academyService.findAllAcademies();
-		for(Academy academy : academiesList) {
-			studentList.addAll(studentService.findStudentsByAcademy(academy));
-		}
-		mav.addObject("academies", academiesList);
-		mav.addObject("students", studentList);
+		if(!academiesList.isEmpty()) {
+			
+			for(Academy academy : academiesList) {
+				studentList.addAll(studentService.findStudentsByAcademy(academy));
+			}
+			mav.addObject("academies", academiesList);
+			mav.addObject("students", studentList);
+		}else 
+			
+			mav.setViewName("/NoAcademy");
 		return mav;
-		
 	}
 	
 	@GetMapping("/annualReport")
@@ -73,11 +79,16 @@ public class AcademyController {
 		List<Academy> academiesList = new ArrayList<>();
 		List<Student> studentList = new ArrayList<>();
 		academiesList = academyService.findAllAcademiesForAnnualReport();
-		for(Academy academy : academiesList) {
-			studentList.addAll(studentService.findStudentsByAcademy(academy));
-		}
-		mav.addObject("academies", academiesList);
-		mav.addObject("students", studentList);
+		if(!academiesList.isEmpty()) {
+			
+			for(Academy academy : academiesList) {
+				studentList.addAll(studentService.findStudentsByAcademy(academy));
+			}
+			mav.addObject("academies", academiesList);
+			mav.addObject("students", studentList);
+		}else 
+			
+			mav.setViewName("/NoAcademy");
 		return mav;
 		
 	}
@@ -135,52 +146,72 @@ public class AcademyController {
 		 * and to call the page and method that is in charge with the 
 		 * system's response.
 		 */
+		List<Academy> academies = new ArrayList<>();
 		if(mav.getViewName() == "/HomePageAcademy") {	//this part is in case we come from an update page
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			mav.setViewName("/academies");
 			if(message.getCode() != null) {
 				
-				List<Academy> academies = new ArrayList<>();
+				academies = new ArrayList<>();
 				Academy academy1 = academyService.findAcademybyId(message.getCode());
 				academies.add(academy1);
-				if(!(academies.get(0) == null))
+				if(!(academies.get(0) == null)) {
 					mav.addObject("academies",academies);
+				}else {
+					mav.setViewName("/NoAcademy");
+				}
 				return mav;
 			}if(!(message.getName() != "")) {
 				
-				List<Academy> academies = academyService.findAcademiesByTitle(message.getName());
-				mav.addObject("academies",academies);
+				academies = academyService.findAcademiesByTitle(message.getName());
+				if(!academies.isEmpty())
+					mav.addObject("academies",academies);
+				else 
+					mav.setViewName("/NoAcademy");
 				return mav;
 			}if(!(message.getLocation() != "")) {
 				
-				List<Academy> academies = academyService.findAcademiesByLocation(message.getLocation());
+				academies = academyService.findAcademiesByLocation(message.getLocation());
+				if(!academies.isEmpty())
+					mav.addObject("academies",academies);
+				else 
+					mav.setViewName("/NoAcademy");
 				mav.addObject("academies",academies);
 				return mav;
 			}
 			if((message.getEdate()!=null) && (message.getSdate()!=null)) {
 			if((!(message.getEdate().toLocalDate().format(formatter).equals("01/01/2000"))&&(!(message.getSdate().toLocalDate().format(formatter).equals("01/01/2000"))))){
 					
-					List<Academy> academies = academyService.findAcademiesByStartAndEndDate(message.getSdate().toLocalDate().format(formatter), message.getEdate().toLocalDate().format(formatter));
-					mav.addObject("academies",academies);
+					academies = academyService.findAcademiesByStartAndEndDate(message.getSdate().toLocalDate().format(formatter), message.getEdate().toLocalDate().format(formatter));
+					if(!academies.isEmpty())
+						mav.addObject("academies",academies);
+					else 
+						mav.setViewName("/NoAcademy");
 					return mav;
 			}
 			}if(message.getEdate()!=null) {
 			if(!(message.getEdate().toLocalDate().format(formatter).equals("01/01/2000"))){
 					
-					List<Academy> academies = academyService.findAcademiesByEndDate(message.getEdate().toLocalDate().format(formatter));
-					mav.addObject("academies",academies);
+					academies = academyService.findAcademiesByEndDate(message.getEdate().toLocalDate().format(formatter));
+					if(!academies.isEmpty())
+						mav.addObject("academies",academies);
+					else 
+						mav.setViewName("/NoAcademy");
 					return mav;
 			}
 			}if(message.getSdate()!=null) {
 			if(!(message.getSdate().toLocalDate().format(formatter).equals("01/01/2000"))){
 					
-					List<Academy> academies = academyService.findAcademiesByStartDate(message.getSdate().toLocalDate().format(formatter));
-					mav.addObject("academies",academies);
+					academies = academyService.findAcademiesByStartDate(message.getSdate().toLocalDate().format(formatter));
+					if(!academies.isEmpty())
+						mav.addObject("academies",academies);
+					else 
+						mav.setViewName("/NoAcademy");
 					return mav;
 			}
 			}else {
 			
-				List<Academy> academies = academyService.findAllAcademies();
+				academies = academyService.findAcademiesForTable();
 				mav.addObject("academies",academies);
 				return mav;
 			}
@@ -188,7 +219,7 @@ public class AcademyController {
 			
 		mav.setViewName("/academies");
 		mav.addObject("message", new Message());
-		List<Academy> academies = academyService.findAcademiesForTable();
+		academies = academyService.findAcademiesForTable();
 		mav.addObject("academies",academies);
 		}
 		return mav;
