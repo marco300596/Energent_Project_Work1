@@ -64,7 +64,9 @@ public class AcademyServiceImpl implements AcademyService {
 		
 		LocalDate minexpectedDate = actualDate.minusYears(1);
 		LocalDate givenStartingDate = LocalDate.parse(givenStartingDateString, formatter);
+		givenStartingDate.minusMonths(1);
 		LocalDate givenEndingDate = LocalDate.parse(givenEndingDateString, formatter);
+		givenEndingDate.minusMonths(1);
 		return (((givenStartingDate.isAfter(minexpectedDate)) || givenStartingDate.isEqual(minexpectedDate)) && ((givenEndingDate.isBefore(actualDate)) || (givenEndingDate.isEqual(actualDate))));
 	}
 	
